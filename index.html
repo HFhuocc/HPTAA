@@ -8,10 +8,22 @@
 
 <style>
 
+/* COLOR SYSTEM */
+
+:root{
+--main:#5ab7ff;
+--main2:#3fa7ff;
+--bg:#eaf6ff;
+--card:#ffffff;
+--hover:#dff1ff;
+}
+
+/* BODY */
+
 body{
 font-family:Arial;
 margin:0;
-background:#eaf6ff;
+background:var(--bg);
 transition:0.3s;
 }
 
@@ -31,15 +43,41 @@ background:#333;
 color:white;
 }
 
+.dark .new{
+background:#333;
+}
+
 /* HEADER */
 
 header{
-background:#5ab7ff;
+background:var(--main);
 color:white;
 text-align:center;
 padding:25px;
 font-size:30px;
 font-weight:bold;
+}
+
+/* TOP INFO */
+
+.topinfo{
+text-align:center;
+margin-top:10px;
+}
+
+/* NEW FILES */
+
+.new{
+background:white;
+max-width:700px;
+margin:20px auto;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+.new h2{
+margin-top:0;
 }
 
 /* MENU */
@@ -53,7 +91,7 @@ padding:40px;
 }
 
 .box{
-background:white;
+background:var(--card);
 width:100%;
 max-width:180px;
 padding:25px;
@@ -67,8 +105,8 @@ box-shadow:0 5px 10px rgba(0,0,0,0.1);
 }
 
 .box:hover{
-transform:scale(1.08);
-background:#dff1ff;
+transform:scale(1.08) rotate(1deg);
+background:var(--hover);
 }
 
 /* LINKS */
@@ -100,25 +138,38 @@ font-weight:bold;
 text-decoration:underline;
 }
 
-/* BACK BUTTON */
+/* BUTTON */
 
 .back{
 display:block;
 margin:20px auto;
 padding:10px 20px;
-background:#5ab7ff;
+background:var(--main);
 color:white;
 border:none;
 border-radius:8px;
 cursor:pointer;
 }
 
-/* COPY BUTTON */
+/* COPY */
 
 .copy{
 margin-left:10px;
 cursor:pointer;
 color:#666;
+}
+
+/* SHARE */
+
+.share{
+display:block;
+margin:10px auto;
+padding:8px 15px;
+border:none;
+border-radius:8px;
+background:var(--main);
+color:white;
+cursor:pointer;
 }
 
 /* SCROLL TOP */
@@ -127,7 +178,7 @@ color:#666;
 position:fixed;
 bottom:20px;
 right:20px;
-background:#5ab7ff;
+background:var(--main);
 color:white;
 border:none;
 padding:10px 15px;
@@ -165,10 +216,34 @@ font-size:16px;
 
 <body>
 
-<header>HPTA</header>
+<header>🐼 HPTA 🦀</header>
 
-<div style="text-align:center;margin-top:10px;">
+<div class="topinfo">
+
 <button onclick="toggleDark()" id="darkIcon">🦀 Sáng</button>
+
+<div style="margin-top:5px">
+📚 Tổng tài liệu: <span id="total"></span>
+</div>
+
+<button class="share" onclick="share()">📤 Chia sẻ web</button>
+
+</div>
+
+<!-- NEW FILES -->
+
+<div class="new">
+
+<h2>🔥 Tài liệu mới</h2>
+
+<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
+Sổ tay kiến thức trọng tâm địa lí
+</a>
+
+<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
+Shape Photoshop
+</a>
+
 </div>
 
 <div class="menu" id="menu">
@@ -232,6 +307,7 @@ font-size:16px;
 <!-- PS -->
 
 <div id="ps" class="links">
+
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 
 <h2>Tài liệu Photoshop</h2>
@@ -307,6 +383,21 @@ alert("Đã copy link")
 
 }
 
+/* SHARE */
+
+function share(){
+
+if(navigator.share){
+navigator.share({
+title:"HPTA Tài liệu học tập",
+url:location.href
+})
+}else{
+alert("Trình duyệt không hỗ trợ chia sẻ")
+}
+
+}
+
 /* SCROLL TOP */
 
 let topBtn=document.getElementById("topBtn")
@@ -339,9 +430,19 @@ document.getElementById("count-"+id).innerText=c
 
 count()
 
+/* TOTAL FILES */
+
+function totalFiles(){
+
+let total=document.querySelectorAll(".links a").length
+
+document.getElementById("total").innerText=total
+
+}
+
+totalFiles()
+
 </script>
 
 </body>
 </html>
-
-
