@@ -8,15 +8,15 @@
 <style>
 
 :root{
---main:#4da6ff;
---bg:#f4fbff;
+--blue1:#4da6ff;
+--blue2:#6ec1ff;
+--bg:#eef7ff;
 --card:#ffffff;
---hover:#e6f4ff;
 }
 
 body{
-font-family:Arial, sans-serif;
 margin:0;
+font-family:Arial;
 background:var(--bg);
 transition:0.3s;
 }
@@ -28,74 +28,80 @@ background:#1e1e1e;
 color:white;
 }
 
+.dark .card{
+background:#333;
+color:white;
+}
+
 .dark header{
 background:#222;
-}
-
-.dark .box{
-background:#333;
-color:white;
-}
-
-.dark .links a{
-background:#333;
-color:white;
 }
 
 /* HEADER */
 
 header{
-background:var(--main);
+background:linear-gradient(135deg,var(--blue1),var(--blue2));
 color:white;
 text-align:center;
 padding:25px;
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 }
 
 /* TOP BAR */
 
 .topbar{
-text-align:center;
-margin:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 20px;
 }
+
+.center{
+text-align:center;
+flex:1;
+}
+
+.clock{
+font-weight:bold;
+}
+
+/* BUTTON */
 
 button{
-background:var(--main);
-color:white;
+background:var(--blue1);
 border:none;
-padding:8px 16px;
+color:white;
+padding:8px 15px;
 border-radius:8px;
 cursor:pointer;
-font-size:16px;
 }
 
-/* MENU */
+/* MENU GRID */
 
 .menu{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:25px;
-padding:40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:20px;
+padding:30px;
+max-width:800px;
+margin:auto;
 }
 
-.box{
+.card{
 background:var(--card);
-width:160px;
-padding:25px;
+padding:30px;
+border-radius:18px;
 text-align:center;
-border-radius:16px;
-cursor:pointer;
 font-size:18px;
 font-weight:bold;
+cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
 transition:0.25s;
-box-shadow:0 6px 15px rgba(0,0,0,0.08);
 }
 
-.box:hover{
-transform:translateY(-5px);
-background:var(--hover);
+.card:hover{
+transform:translateY(-6px);
 }
 
 /* LINKS */
@@ -107,62 +113,37 @@ max-width:700px;
 margin:auto;
 }
 
-.links h2{
-color:#0060b8;
-}
-
-.links h3{
-color:red;
-}
-
 .links a{
 display:block;
-margin:12px 0;
-text-decoration:none;
-color:#004b8f;
-font-weight:bold;
-background:#f0f8ff;
-padding:10px;
+background:#f2f9ff;
+padding:12px;
+margin:10px 0;
 border-radius:8px;
+text-decoration:none;
+color:#0056a6;
+font-weight:bold;
 }
 
 .links a:hover{
-background:#dff0ff;
+background:#e2f2ff;
 }
 
-/* BACK */
+h2{
+color:#0070d6;
+}
+
+h3{
+color:red;
+}
 
 .back{
-display:block;
-margin:20px auto;
-padding:10px 20px;
-background:var(--main);
-color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
+margin-bottom:15px;
 }
 
-/* SCROLL TOP */
+/* CLOCK */
 
-#topBtn{
-position:fixed;
-bottom:20px;
-right:20px;
-background:var(--main);
-color:white;
-border:none;
-padding:10px 15px;
-border-radius:8px;
-cursor:pointer;
-display:none;
-}
-
-@media(max-width:600px){
-.box{
-width:130px;
+.clock{
 font-size:16px;
-}
 }
 
 </style>
@@ -173,23 +154,30 @@ font-size:16px;
 <header>HPTA</header>
 
 <div class="topbar">
-<button onclick="toggleDark()" id="darkIcon">🦀 Sáng</button>
+
+<div>
+<button onclick="backMenu()">⬅</button>
+</div>
+
+<div class="center">
+<button onclick="toggleDark()" id="darkIcon">🦀</button>
+</div>
+
+<div class="clock" id="clock"></div>
+
 </div>
 
 <div class="menu" id="menu">
 
-<div class="box" onclick="showLinks('dia')">🌏 Địa Lí</div>
-<div class="box" onclick="showLinks('su')">📜 Lịch Sử</div>
-<div class="box" onclick="showLinks('toan')">➗ Toán</div>
-<div class="box" onclick="showLinks('van')">📖 Ngữ Văn</div>
-<div class="box" onclick="showLinks('ps')">🎨 Photoshop</div>
+<div class="card" onclick="showLinks('dia')">🌏 Địa Lí</div>
+<div class="card" onclick="showLinks('su')">📜 Lịch Sử</div>
+<div class="card" onclick="showLinks('toan')">➗ Toán</div>
+<div class="card" onclick="showLinks('van')">📖 Ngữ Văn</div>
+<div class="card" onclick="showLinks('ps')">🎨 Photoshop</div>
 
 </div>
 
 <div id="dia" class="links">
-
-<button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài Liệu Địa Lí</h2>
 
 <a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
@@ -206,30 +194,22 @@ font-size:16px;
 </div>
 
 <div id="su" class="links">
-<button class="back" onclick="backMenu()">⬅ Quay lại</button>
 <h2>Tài liệu Lịch Sử</h2>
 <h3>Hiện Chưa Có</h3>
 </div>
 
 <div id="toan" class="links">
-<button class="back" onclick="backMenu()">⬅ Quay lại</button>
 <h2>Tài liệu Toán</h2>
 <h3>Hiện Chưa Có</h3>
 </div>
 
 <div id="van" class="links">
-<button class="back" onclick="backMenu()">⬅ Quay lại</button>
 <h2>Tài liệu Ngữ Văn</h2>
 <h3>Hiện Chưa Có</h3>
 </div>
 
 <div id="ps" class="links">
-
-<button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Photoshop</h2>
-
-<h3>Shape</h3>
 
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
 1. Shape
@@ -237,46 +217,64 @@ font-size:16px;
 
 </div>
 
-<button onclick="topFunction()" id="topBtn">⬆</button>
-
 <script>
 
+/* SHOW */
+
 function showLinks(id){
+
 document.getElementById("menu").style.display="none"
+
 let all=document.querySelectorAll(".links")
 all.forEach(x=>x.style.display="none")
+
 document.getElementById(id).style.display="block"
+
 }
+
+/* BACK */
 
 function backMenu(){
-document.getElementById("menu").style.display="flex"
+
+document.getElementById("menu").style.display="grid"
+
 let all=document.querySelectorAll(".links")
 all.forEach(x=>x.style.display="none")
+
 }
 
+/* DARK MODE */
+
 function toggleDark(){
+
 document.body.classList.toggle("dark")
+
 let icon=document.getElementById("darkIcon")
 
 if(document.body.classList.contains("dark")){
-icon.innerText="🐼 Tối"
+icon.innerText="🐼"
 }else{
-icon.innerText="🦀 Sáng"
-}
-}
-
-let topBtn=document.getElementById("topBtn")
-
-window.onscroll=function(){
-if(document.body.scrollTop>200||document.documentElement.scrollTop>200)
-topBtn.style.display="block"
-else
-topBtn.style.display="none"
+icon.innerText="🦀"
 }
 
-function topFunction(){
-window.scrollTo({top:0,behavior:"smooth"})
 }
+
+/* CLOCK */
+
+function updateClock(){
+
+let now=new Date()
+
+let h=String(now.getHours()).padStart(2,"0")
+let m=String(now.getMinutes()).padStart(2,"0")
+let s=String(now.getSeconds()).padStart(2,"0")
+
+document.getElementById("clock").innerText=h+":"+m+":"+s
+
+}
+
+setInterval(updateClock,1000)
+updateClock()
 
 </script>
 
