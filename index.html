@@ -3,45 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🐼 HPTA 🦀</title>
+<title>HPTA</title>
 
 <style>
 
 :root{
---main:#7ecbff;
---main2:#5ab7ff;
---bg:#eaf6ff;
+--main:#4da6ff;
+--bg:#f4fbff;
 --card:#ffffff;
---hover:#dff4ff;
+--hover:#e6f4ff;
 }
 
 body{
-font-family:Arial;
+font-family:Arial, sans-serif;
 margin:0;
 background:var(--bg);
 transition:0.3s;
-}
-
-/* panda + crab background */
-
-body::before{
-content:"🐼";
-position:fixed;
-font-size:150px;
-left:20px;
-bottom:20px;
-opacity:0.07;
-pointer-events:none;
-}
-
-body::after{
-content:"🦀";
-position:fixed;
-font-size:150px;
-right:20px;
-top:20px;
-opacity:0.07;
-pointer-events:none;
 }
 
 /* DARK MODE */
@@ -68,27 +45,27 @@ color:white;
 /* HEADER */
 
 header{
-background:var(--main2);
+background:var(--main);
 color:white;
 text-align:center;
 padding:25px;
-font-size:30px;
+font-size:28px;
 font-weight:bold;
 }
 
-/* TOP BAR */
+/* DARK BUTTON */
 
 .topbar{
 text-align:center;
-margin-top:10px;
+margin:15px;
 }
 
 button{
-background:var(--main2);
+background:var(--main);
 color:white;
 border:none;
-padding:8px 15px;
-border-radius:10px;
+padding:8px 16px;
+border-radius:8px;
 cursor:pointer;
 }
 
@@ -98,26 +75,25 @@ cursor:pointer;
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:20px;
+gap:25px;
 padding:40px;
 }
 
 .box{
 background:var(--card);
-width:100%;
-max-width:180px;
+width:160px;
 padding:25px;
 text-align:center;
-border-radius:18px;
+border-radius:16px;
 cursor:pointer;
 font-size:18px;
 font-weight:bold;
 transition:0.25s;
-box-shadow:0 5px 12px rgba(0,0,0,0.1);
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
 }
 
 .box:hover{
-transform:scale(1.07);
+transform:translateY(-5px);
 background:var(--hover);
 }
 
@@ -131,7 +107,7 @@ margin:auto;
 }
 
 .links h2{
-color:#004b8f;
+color:#0060b8;
 }
 
 .links h3{
@@ -142,27 +118,27 @@ color:red;
 display:block;
 margin:12px 0;
 text-decoration:none;
-color:#0056a6;
+color:#004b8f;
 font-weight:bold;
-background:#f2fbff;
+background:#f0f8ff;
 padding:10px;
-border-radius:10px;
+border-radius:8px;
 }
 
 .links a:hover{
-background:#dff4ff;
+background:#dff0ff;
 }
 
-/* BACK BUTTON */
+/* BACK */
 
 .back{
 display:block;
 margin:20px auto;
 padding:10px 20px;
-background:var(--main2);
+background:var(--main);
 color:white;
 border:none;
-border-radius:10px;
+border-radius:8px;
 cursor:pointer;
 }
 
@@ -172,34 +148,19 @@ cursor:pointer;
 position:fixed;
 bottom:20px;
 right:20px;
-background:var(--main2);
+background:var(--main);
 color:white;
 border:none;
 padding:10px 15px;
-border-radius:10px;
+border-radius:8px;
 cursor:pointer;
 display:none;
 }
 
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:20px;
-font-size:14px;
-color:#666;
-}
-
-/* MOBILE */
-
 @media(max-width:600px){
 
-header{
-font-size:22px;
-}
-
 .box{
-max-width:140px;
+width:130px;
 font-size:16px;
 }
 
@@ -210,10 +171,10 @@ font-size:16px;
 
 <body>
 
-<header>🐼 HPTA 🦀</header>
+<header>HPTA</header>
 
 <div class="topbar">
-<button onclick="toggleDark()" id="darkIcon">🦀 Sáng</button>
+<button onclick="toggleDark()" id="darkIcon">🌙 Dark</button>
 </div>
 
 <div class="menu" id="menu">
@@ -289,10 +250,6 @@ font-size:16px;
 
 <button onclick="topFunction()" id="topBtn">⬆</button>
 
-<footer>
-Cập nhật lần cuối: 2026
-</footer>
-
 <script>
 
 function showLinks(id){
@@ -313,21 +270,19 @@ document.body.classList.toggle("dark")
 let icon=document.getElementById("darkIcon")
 
 if(document.body.classList.contains("dark")){
-icon.innerText="🐼 Tối"
+icon.innerText="🦀 Light"
 }else{
-icon.innerText="🦀 Sáng"
+icon.innerText="🐼 Dark"
 }
 }
 
 let topBtn=document.getElementById("topBtn")
 
 window.onscroll=function(){
-
 if(document.body.scrollTop>200||document.documentElement.scrollTop>200)
 topBtn.style.display="block"
 else
 topBtn.style.display="none"
-
 }
 
 function topFunction(){
