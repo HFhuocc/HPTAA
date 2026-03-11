@@ -7,10 +7,13 @@
 
 <style>
 
-*{box-sizing:border-box}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
-margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 background:#eef7ff;
 color:#0f172a;
@@ -27,19 +30,19 @@ min-height:100vh;
 /* SIDEBAR */
 
 .sidebar{
-width:220px;
+width:200px;
 background:linear-gradient(180deg,#4da6ff,#6ec1ff);
 color:white;
-padding:20px;
+padding:25px 18px;
 display:flex;
 flex-direction:column;
-gap:15px;
+gap:14px;
 }
 
 .logo{
 font-size:22px;
 font-weight:bold;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 .menu-btn{
@@ -57,7 +60,7 @@ background:rgba(255,255,255,0.2);
 
 .main{
 flex:1;
-padding:25px;
+padding:30px;
 animation:fade .35s ease;
 }
 
@@ -65,13 +68,15 @@ animation:fade .35s ease;
 
 .topbar{
 display:flex;
-justify-content:space-between;
+justify-content:flex-end;
 align-items:center;
-margin-bottom:25px;
+gap:20px;
+margin-bottom:30px;
 }
 
 .timebox{
 font-size:14px;
+text-align:right;
 color:#1e3a8a;
 }
 
@@ -79,9 +84,22 @@ button{
 border:none;
 background:#4da6ff;
 color:white;
-padding:8px 14px;
-border-radius:10px;
+padding:10px 16px;
+border-radius:12px;
 cursor:pointer;
+font-weight:600;
+}
+
+/* HOME */
+
+#home h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+#home p{
+font-size:18px;
+color:#334155;
 }
 
 /* LINKS */
@@ -145,6 +163,10 @@ color:white;
 background:linear-gradient(180deg,#1e293b,#334155);
 }
 
+.dark #home p{
+color:#cbd5f5;
+}
+
 </style>
 </head>
 
@@ -182,7 +204,10 @@ background:linear-gradient(180deg,#1e293b,#334155);
 </div>
 
 <div id="home">
-<h2>Chọn môn học ở sidebar</h2>
+
+<h1>HPTA</h1>
+<p>Trang Web Tài Liệu & Ôn Tập</p>
+
 </div>
 
 <!-- ĐỊA -->
