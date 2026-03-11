@@ -7,22 +7,10 @@
 
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+margin:0;
+font-family:system-ui;
 background:#eef7ff;
-color:#0f172a;
-transition:.3s;
-}
-
-/* LAYOUT */
-
-.container{
 display:flex;
 min-height:100vh;
 }
@@ -33,26 +21,26 @@ min-height:100vh;
 width:200px;
 background:linear-gradient(180deg,#4da6ff,#6ec1ff);
 color:white;
-padding:25px 18px;
-display:flex;
-flex-direction:column;
-gap:14px;
+padding:25px 15px;
 }
 
 .logo{
 font-size:22px;
 font-weight:bold;
-margin-bottom:15px;
+margin-bottom:20px;
 }
 
-.menu-btn{
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
 padding:12px;
 border-radius:10px;
-cursor:pointer;
-transition:.25s;
+margin-bottom:8px;
+transition:.2s;
 }
 
-.menu-btn:hover{
+.sidebar a:hover{
 background:rgba(255,255,255,0.2);
 }
 
@@ -60,111 +48,16 @@ background:rgba(255,255,255,0.2);
 
 .main{
 flex:1;
-padding:30px;
-animation:fade .35s ease;
+padding:40px;
 }
 
-/* TOPBAR */
-
-.topbar{
-display:flex;
-justify-content:flex-end;
-align-items:center;
-gap:20px;
-margin-bottom:30px;
+h1{
+font-size:36px;
 }
 
-.timebox{
-font-size:14px;
-text-align:right;
-color:#1e3a8a;
-}
-
-button{
-border:none;
-background:#4da6ff;
-color:white;
-padding:10px 16px;
-border-radius:12px;
-cursor:pointer;
-font-weight:600;
-}
-
-/* HOME */
-
-#home h1{
-font-size:34px;
-margin-bottom:10px;
-}
-
-#home p{
+p{
 font-size:18px;
-color:#334155;
-}
-
-/* LINKS */
-
-.links{
-display:none;
-animation:slide .35s ease;
-}
-
-.links a{
-display:block;
-background:white;
-margin:12px 0;
-padding:14px;
-border-radius:12px;
-text-decoration:none;
-color:#1d4ed8;
-font-weight:600;
-box-shadow:0 5px 12px rgba(0,0,0,0.05);
-transition:.2s;
-}
-
-.links a:hover{
-transform:translateY(-2px);
-background:#eef6ff;
-}
-
-.back{
-margin-bottom:15px;
-}
-
-/* ANIMATION */
-
-@keyframes fade{
-from{opacity:0}
-to{opacity:1}
-}
-
-@keyframes slide{
-from{opacity:0;transform:translateX(10px)}
-to{opacity:1;transform:translateX(0)}
-}
-
-/* DARK MODE */
-
-.dark{
-background:#0f172a;
-color:white;
-}
-
-.dark .links a{
-background:#1e293b;
-color:white;
-}
-
-.dark .timebox{
-color:white;
-}
-
-.dark .sidebar{
-background:linear-gradient(180deg,#1e293b,#334155);
-}
-
-.dark #home p{
-color:#cbd5f5;
+color:#475569;
 }
 
 </style>
@@ -172,198 +65,24 @@ color:#cbd5f5;
 
 <body>
 
-<div class="container">
-
-<!-- SIDEBAR -->
-
 <div class="sidebar">
 
 <div class="logo">HPTA</div>
 
-<div class="menu-btn" onclick="showLinks('dia')">🌏 Địa Lí</div>
-<div class="menu-btn" onclick="showLinks('su')">📜 Lịch Sử</div>
-<div class="menu-btn" onclick="showLinks('toan')">➗ Toán</div>
-<div class="menu-btn" onclick="showLinks('van')">📖 Ngữ Văn</div>
-<div class="menu-btn" onclick="showLinks('ps')">🎨 Photoshop</div>
+<a href="dia.html">🌏 Địa Lí</a>
+<a href="su.html">📜 Lịch Sử</a>
+<a href="toan.html">➗ Toán</a>
+<a href="van.html">📖 Ngữ Văn</a>
+<a href="photoshop.html">🎨 Photoshop</a>
 
 </div>
-
-<!-- MAIN -->
 
 <div class="main">
-
-<div class="topbar">
-
-<div class="timebox">
-<div id="date"></div>
-<div id="clock"></div>
-</div>
-
-<button onclick="toggleDark()" id="darkBtn">🦀 Sáng</button>
-
-</div>
-
-<div id="home">
 
 <h1>HPTA</h1>
 <p>Trang Web Tài Liệu & Ôn Tập</p>
 
 </div>
-
-<!-- ĐỊA -->
-
-<div id="dia" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
-<h2>Tài Liệu Địa Lí</h2>
-
-<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
-1. Sổ tay kiến thức trọng tâm môn địa lí
-</a>
-
-<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
-2. Chiến Lược Bứt Phá +9 Địa Lí
-</a>
-
-<h3 style="color:red">Đề ôn thi: Chưa có</h3>
-
-</div>
-
-<!-- LỊCH SỬ -->
-
-<div id="su" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
-<h2>Tài liệu Lịch Sử</h2>
-
-<h3 style="color:red">Hiện chưa có</h3>
-
-</div>
-
-<!-- TOÁN -->
-
-<div id="toan" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
-<h2>Tài liệu Toán</h2>
-
-<h3 style="color:red">Hiện chưa có</h3>
-
-</div>
-
-<!-- VĂN -->
-
-<div id="van" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
-<h2>Tài liệu Ngữ Văn</h2>
-
-<h3 style="color:red">Hiện chưa có</h3>
-
-</div>
-
-<!-- PHOTOSHOP -->
-
-<div id="ps" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
-<h2>Tài liệu Photoshop</h2>
-
-<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
-1. Shape
-</a>
-
-</div>
-
-</div>
-</div>
-
-<script>
-
-/* SHOW PAGE */
-
-function showLinks(id){
-
-document.getElementById("home").style.display="none"
-
-let all=document.querySelectorAll(".links")
-all.forEach(x=>x.style.display="none")
-
-document.getElementById(id).style.display="block"
-
-}
-
-/* BACK */
-
-function backHome(){
-
-document.getElementById("home").style.display="block"
-
-let all=document.querySelectorAll(".links")
-all.forEach(x=>x.style.display="none")
-
-}
-
-/* DARK MODE */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark")
-
-let btn=document.getElementById("darkBtn")
-
-if(document.body.classList.contains("dark")){
-btn.innerText="🐼 Tối"
-localStorage.setItem("theme","dark")
-}else{
-btn.innerText="🦀 Sáng"
-localStorage.setItem("theme","light")
-}
-
-}
-
-/* LOAD THEME */
-
-window.onload=function(){
-
-let theme=localStorage.getItem("theme")
-
-if(theme==="dark"){
-document.body.classList.add("dark")
-document.getElementById("darkBtn").innerText="🐼 Tối"
-}
-
-}
-
-/* CLOCK */
-
-function updateClock(){
-
-let now=new Date()
-
-let h=String(now.getHours()).padStart(2,"0")
-let m=String(now.getMinutes()).padStart(2,"0")
-let s=String(now.getSeconds()).padStart(2,"0")
-
-document.getElementById("clock").innerText=h+":"+m+":"+s
-
-let d=now.getDate()
-let mo=now.getMonth()+1
-let y=now.getFullYear()
-
-document.getElementById("date").innerText=d+"/"+mo+"/"+y
-
-}
-
-setInterval(updateClock,1000)
-updateClock()
-
-</script>
 
 </body>
 </html>
