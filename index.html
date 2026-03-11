@@ -7,16 +7,14 @@
 
 <style>
 
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box;}
 
 body{
 margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-background:linear-gradient(180deg,#eaf6ff,#f6fbff);
-min-height:100vh;
+background:linear-gradient(180deg,#eaf6ff,#f7fbff);
 color:#0f172a;
+min-height:100vh;
 }
 
 /* HEADER */
@@ -27,7 +25,7 @@ justify-content:space-between;
 align-items:center;
 padding:18px 25px;
 background:white;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
 position:sticky;
 top:0;
 }
@@ -37,6 +35,8 @@ font-size:22px;
 font-weight:700;
 color:#1e90ff;
 }
+
+/* TOP RIGHT */
 
 .actions{
 display:flex;
@@ -54,12 +54,18 @@ cursor:pointer;
 font-weight:600;
 }
 
+button:hover{
+background:#3796ff;
+}
+
+/* CLOCK */
+
 .clock{
 font-weight:600;
 color:#1e3a8a;
 }
 
-/* MENU GRID */
+/* MENU */
 
 .menu{
 max-width:900px;
@@ -89,7 +95,7 @@ transform:translateY(-6px);
 box-shadow:0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* LINKS PAGE */
+/* LINKS */
 
 .links{
 display:none;
@@ -143,6 +149,39 @@ background:#1e293b;
 color:white;
 }
 
+.dark .clock{
+color:white;
+}
+
+/* AUTO SYSTEM DARK */
+
+@media (prefers-color-scheme: dark) {
+
+body{
+background:#0f172a;
+color:white;
+}
+
+.header{
+background:#1e293b;
+}
+
+.card{
+background:#1e293b;
+color:white;
+}
+
+.links a{
+background:#1e293b;
+color:white;
+}
+
+.clock{
+color:white;
+}
+
+}
+
 </style>
 </head>
 
@@ -192,30 +231,21 @@ color:white;
 </div>
 
 <div id="su" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Lịch Sử</h2>
 <h3 style="color:red">Hiện Chưa Có</h3>
-
 </div>
 
 <div id="toan" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Toán</h2>
 <h3 style="color:red">Hiện Chưa Có</h3>
-
 </div>
 
 <div id="van" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Ngữ Văn</h2>
 <h3 style="color:red">Hiện Chưa Có</h3>
-
 </div>
 
 <div id="ps" class="links">
@@ -232,7 +262,7 @@ color:white;
 
 <script>
 
-/* SHOW PAGE */
+/* SHOW */
 
 function showLinks(id){
 
@@ -258,7 +288,7 @@ all.forEach(x=>x.style.display="none")
 
 }
 
-/* DARK MODE */
+/* DARK MODE BUTTON */
 
 function toggleDark(){
 
@@ -289,7 +319,6 @@ document.getElementById("clock").innerText=h+":"+m+":"+s
 }
 
 setInterval(updateClock,1000)
-
 updateClock()
 
 </script>
