@@ -42,20 +42,6 @@ font-size:30px;
 font-weight:bold;
 }
 
-/* SEARCH */
-
-.search{
-text-align:center;
-margin-top:20px;
-}
-
-.search input{
-padding:10px;
-width:250px;
-border-radius:8px;
-border:1px solid #ccc;
-}
-
 /* MENU */
 
 .menu{
@@ -182,11 +168,7 @@ font-size:16px;
 <header>HPTA</header>
 
 <div style="text-align:center;margin-top:10px;">
-<button onclick="toggleDark()">🌙 Dark Mode</button>
-</div>
-
-<div class="search">
-<input type="text" id="search" placeholder="Tìm tài liệu..." onkeyup="searchDoc()">
+<button onclick="toggleDark()" id="darkIcon">🦀</button>
 </div>
 
 <div class="menu" id="menu">
@@ -226,40 +208,30 @@ font-size:16px;
 <!-- SU -->
 
 <div id="su" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Lịch Sử</h2>
 <h3>Hiện Chưa Có</h3>
-
 </div>
 
 <!-- TOAN -->
 
 <div id="toan" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Toán</h2>
 <h3>Hiện Chưa Có</h3>
-
 </div>
 
 <!-- VAN -->
 
 <div id="van" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
-
 <h2>Tài liệu Ngữ Văn</h2>
 <h3>Hiện Chưa Có</h3>
-
 </div>
 
 <!-- PS -->
 
 <div id="ps" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 
 <h2>Tài liệu Photoshop</h2>
@@ -288,7 +260,6 @@ function showLinks(id){
 document.getElementById("menu").style.display="none"
 
 let all=document.querySelectorAll(".links")
-
 all.forEach(x=>x.style.display="none")
 
 document.getElementById(id).style.display="block"
@@ -302,7 +273,6 @@ function backMenu(){
 document.getElementById("menu").style.display="flex"
 
 let all=document.querySelectorAll(".links")
-
 all.forEach(x=>x.style.display="none")
 
 }
@@ -310,36 +280,16 @@ all.forEach(x=>x.style.display="none")
 /* DARK MODE */
 
 function toggleDark(){
+
 document.body.classList.toggle("dark")
-}
 
-/* SEARCH */
+let icon=document.getElementById("darkIcon")
 
-function searchDoc(){
-
-let input=document.getElementById("search").value.toLowerCase()
-
-let sections=document.querySelectorAll(".links")
-
-sections.forEach(section=>{
-
-section.style.display="block"
-
-let links=section.querySelectorAll("a")
-
-links.forEach(link=>{
-
-if(link.textContent.toLowerCase().includes(input)){
-link.style.display="block"
+if(document.body.classList.contains("dark")){
+icon.innerText="🐼"
 }else{
-link.style.display="none"
+icon.innerText="🦀"
 }
-
-})
-
-})
-
-document.getElementById("menu").style.display="none"
 
 }
 
@@ -371,9 +321,7 @@ topBtn.style.display="none"
 }
 
 function topFunction(){
-
 window.scrollTo({top:0,behavior:"smooth"})
-
 }
 
 /* COUNT FILES */
@@ -383,7 +331,6 @@ function count(){
 ["dia","su","toan","van","ps"].forEach(id=>{
 
 let c=document.querySelectorAll("#"+id+" a").length
-
 document.getElementById("count-"+id).innerText=c
 
 })
@@ -396,4 +343,3 @@ count()
 
 </body>
 </html>
-
