@@ -7,143 +7,140 @@
 
 <style>
 
-:root{
---blue1:#4da6ff;
---blue2:#6ec1ff;
---bg:#eef7ff;
---card:#ffffff;
+*{
+box-sizing:border-box;
 }
 
 body{
 margin:0;
-font-family:Arial;
-background:var(--bg);
-transition:0.3s;
-}
-
-/* DARK MODE */
-
-.dark{
-background:#1e1e1e;
-color:white;
-}
-
-.dark .card{
-background:#333;
-color:white;
-}
-
-.dark header{
-background:#222;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+background:linear-gradient(180deg,#eaf6ff,#f6fbff);
+min-height:100vh;
+color:#0f172a;
 }
 
 /* HEADER */
 
-header{
-background:linear-gradient(135deg,var(--blue1),var(--blue2));
-color:white;
-text-align:center;
-padding:25px;
-font-size:26px;
-font-weight:bold;
-}
-
-/* TOP BAR */
-
-.topbar{
+.header{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:10px 20px;
+padding:18px 25px;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
 }
 
-.center{
-text-align:center;
-flex:1;
+.logo{
+font-size:22px;
+font-weight:700;
+color:#1e90ff;
+}
+
+.actions{
+display:flex;
+gap:12px;
+align-items:center;
+}
+
+button{
+border:none;
+background:#4da6ff;
+color:white;
+padding:8px 14px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
 }
 
 .clock{
-font-weight:bold;
-}
-
-/* BUTTON */
-
-button{
-background:var(--blue1);
-border:none;
-color:white;
-padding:8px 15px;
-border-radius:8px;
-cursor:pointer;
+font-weight:600;
+color:#1e3a8a;
 }
 
 /* MENU GRID */
 
 .menu{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:20px;
-padding:30px;
-max-width:800px;
+max-width:900px;
 margin:auto;
+padding:40px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+gap:20px;
 }
 
+/* CARD */
+
 .card{
-background:var(--card);
-padding:30px;
+background:white;
 border-radius:18px;
+padding:35px 20px;
 text-align:center;
 font-size:18px;
-font-weight:bold;
+font-weight:600;
 cursor:pointer;
-box-shadow:0 10px 20px rgba(0,0,0,0.08);
-transition:0.25s;
+box-shadow:0 10px 25px rgba(0,0,0,0.07);
+transition:all .25s;
 }
 
 .card:hover{
 transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,0.1);
 }
 
-/* LINKS */
+/* LINKS PAGE */
 
 .links{
 display:none;
-padding:20px;
-max-width:700px;
+max-width:800px;
 margin:auto;
+padding:30px;
+}
+
+.links h2{
+color:#2563eb;
 }
 
 .links a{
 display:block;
-background:#f2f9ff;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
+background:white;
+margin:12px 0;
+padding:14px;
+border-radius:12px;
 text-decoration:none;
-color:#0056a6;
-font-weight:bold;
+color:#1d4ed8;
+font-weight:600;
+box-shadow:0 5px 12px rgba(0,0,0,0.05);
 }
 
 .links a:hover{
-background:#e2f2ff;
-}
-
-h2{
-color:#0070d6;
-}
-
-h3{
-color:red;
+background:#eef6ff;
 }
 
 .back{
 margin-bottom:15px;
 }
 
-/* CLOCK */
+/* DARK MODE */
 
-.clock{
-font-size:16px;
+.dark{
+background:#0f172a;
+color:white;
+}
+
+.dark .header{
+background:#1e293b;
+}
+
+.dark .card{
+background:#1e293b;
+color:white;
+}
+
+.dark .links a{
+background:#1e293b;
+color:white;
 }
 
 </style>
@@ -151,19 +148,17 @@ font-size:16px;
 
 <body>
 
-<header>HPTA</header>
+<div class="header">
 
-<div class="topbar">
+<div class="logo">HPTA</div>
 
-<div>
-<button onclick="backMenu()">⬅ Quay Lại</button>
-</div>
-
-<div class="center">
-<button onclick="toggleDark()" id="darkIcon">🦀 Sáng </button>
-</div>
+<div class="actions">
 
 <div class="clock" id="clock"></div>
+
+<button onclick="toggleDark()" id="darkBtn">🦀</button>
+
+</div>
 
 </div>
 
@@ -178,6 +173,9 @@ font-size:16px;
 </div>
 
 <div id="dia" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài Liệu Địa Lí</h2>
 
 <a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
@@ -189,26 +187,41 @@ font-size:16px;
 </a>
 
 <h2>Đề Ôn Thi Thử Địa Lí</h2>
-<h3>Hiện Chưa Có</h3>
+<h3 style="color:red">Hiện Chưa Có</h3>
 
 </div>
 
 <div id="su" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Lịch Sử</h2>
-<h3>Hiện Chưa Có</h3>
+<h3 style="color:red">Hiện Chưa Có</h3>
+
 </div>
 
 <div id="toan" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Toán</h2>
-<h3>Hiện Chưa Có</h3>
+<h3 style="color:red">Hiện Chưa Có</h3>
+
 </div>
 
 <div id="van" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Ngữ Văn</h2>
-<h3>Hiện Chưa Có</h3>
+<h3 style="color:red">Hiện Chưa Có</h3>
+
 </div>
 
 <div id="ps" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Photoshop</h2>
 
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
@@ -219,13 +232,14 @@ font-size:16px;
 
 <script>
 
-/* SHOW */
+/* SHOW PAGE */
 
 function showLinks(id){
 
 document.getElementById("menu").style.display="none"
 
 let all=document.querySelectorAll(".links")
+
 all.forEach(x=>x.style.display="none")
 
 document.getElementById(id).style.display="block"
@@ -239,6 +253,7 @@ function backMenu(){
 document.getElementById("menu").style.display="grid"
 
 let all=document.querySelectorAll(".links")
+
 all.forEach(x=>x.style.display="none")
 
 }
@@ -249,12 +264,12 @@ function toggleDark(){
 
 document.body.classList.toggle("dark")
 
-let icon=document.getElementById("darkIcon")
+let btn=document.getElementById("darkBtn")
 
 if(document.body.classList.contains("dark")){
-icon.innerText="🐼 Tối"
+btn.innerText="🐼"
 }else{
-icon.innerText="🦀 Sáng"
+btn.innerText="🦀"
 }
 
 }
@@ -274,6 +289,7 @@ document.getElementById("clock").innerText=h+":"+m+":"+s
 }
 
 setInterval(updateClock,1000)
+
 updateClock()
 
 </script>
