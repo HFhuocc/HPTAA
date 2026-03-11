@@ -2,7 +2,6 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>HPTA</title>
@@ -10,138 +9,167 @@
 <style>
 
 body{
-    font-family: Arial;
-    margin:0;
-    background:#eaf6ff;
+font-family:Arial;
+margin:0;
+background:#eaf6ff;
+transition:0.3s;
 }
 
-/* TRANG BẢO TRÌ */
+/* DARK MODE */
 
-.maintenance{
-    display:none;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background:#111;
-    color:white;
-    text-align:center;
+.dark{
+background:#1e1e1e;
+color:white;
 }
 
-.face{
-    font-size:90px;
+.dark header{
+background:#222;
 }
 
-.msg{
-    font-size:24px;
-    margin-top:20px;
+.dark .box{
+background:#333;
+color:white;
 }
 
-/* WEB CHÍNH */
-
-#mainSite{
-display:block;
-}
+/* HEADER */
 
 header{
-    background:#5ab7ff;
-    color:white;
-    text-align:center;
-    padding:25px;
-    font-size:30px;
-    font-weight:bold;
+background:#5ab7ff;
+color:white;
+text-align:center;
+padding:25px;
+font-size:30px;
+font-weight:bold;
+}
+
+/* SEARCH */
+
+.search{
+text-align:center;
+margin-top:20px;
+}
+
+.search input{
+padding:10px;
+width:250px;
+border-radius:8px;
+border:1px solid #ccc;
 }
 
 /* MENU */
 
 .menu{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-    padding:40px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+padding:40px;
 }
 
-/* BOX */
-
 .box{
-    background:white;
-    width:100%;
-    max-width:180px;
-    padding:25px;
-    text-align:center;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
-    font-weight:bold;
-    transition:0.3s;
-    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+background:white;
+width:100%;
+max-width:180px;
+padding:25px;
+text-align:center;
+border-radius:10px;
+cursor:pointer;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
 }
 
 .box:hover{
-    transform:scale(1.08);
-    background:#dff1ff;
+transform:scale(1.08);
+background:#dff1ff;
 }
 
 /* LINKS */
 
 .links{
-    display:none;
-    padding:20px;
-    max-width:600px;
-    margin:auto;
+display:none;
+padding:20px;
+max-width:700px;
+margin:auto;
 }
 
 .links h2{
-    color:#000000;
+color:#000;
 }
-    
+
 .links h3{
-    color:#FF0000;
+color:red;
 }
 
 .links a{
-    display:block;
-    margin:10px 0;
-    text-decoration:none;
-    color:#0056a6;
-    font-weight:bold;
+display:block;
+margin:10px 0;
+text-decoration:none;
+color:#0056a6;
+font-weight:bold;
 }
 
 .links a:hover{
-    text-decoration:underline;
+text-decoration:underline;
 }
 
-/* RESPONSIVE CHO ĐIỆN THOẠI */
+/* BACK BUTTON */
 
-@media (max-width:600px){
+.back{
+display:block;
+margin:20px auto;
+padding:10px 20px;
+background:#5ab7ff;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* COPY BUTTON */
+
+.copy{
+margin-left:10px;
+cursor:pointer;
+color:#666;
+}
+
+/* SCROLL TOP */
+
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#5ab7ff;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+display:none;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:#666;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
 
 header{
 font-size:22px;
-padding:18px;
-}
-
-.menu{
-padding:20px;
-gap:15px;
 }
 
 .box{
 max-width:140px;
 font-size:16px;
-padding:18px;
-}
-
-.links{
-padding:15px;
-}
-
-.face{
-font-size:70px;
-}
-
-.msg{
-font-size:18px;
 }
 
 }
@@ -151,132 +179,209 @@ font-size:18px;
 
 <body>
 
-<!-- TRANG BẢO TRÌ -->
-
-<div id="maintenancePage" class="maintenance">
-
-<div class="face">:(</div>
-
-<div class="msg">
-Xin lỗi!<br>
-Hệ thống đang cập nhật<br>
-Vui lòng quay lại sau!
-</div>
-
-</div>
-
-
-<!-- WEB CHÍNH -->
-
-<div id="mainSite">
-
 <header>HPTA</header>
 
-<div class="menu">
+<div style="text-align:center;margin-top:10px;">
+<button onclick="toggleDark()">🌙 Dark Mode</button>
+</div>
 
-<div class="box" onclick="showLinks('dia')">Địa Lí</div>
+<div class="search">
+<input type="text" id="search" placeholder="Tìm tài liệu..." onkeyup="searchDoc()">
+</div>
 
-<div class="box" onclick="showLinks('su')">Lịch Sử</div>
+<div class="menu" id="menu">
 
-<div class="box" onclick="showLinks('toan')">Toán</div>
-
-<div class="box" onclick="showLinks('van')">Ngữ Văn</div>
-
-<div class="box" onclick="showLinks('ps')">Photoshop</div>
+<div class="box" onclick="showLinks('dia')">Địa Lí (<span id="count-dia"></span>)</div>
+<div class="box" onclick="showLinks('su')">Lịch Sử (<span id="count-su"></span>)</div>
+<div class="box" onclick="showLinks('toan')">Toán (<span id="count-toan"></span>)</div>
+<div class="box" onclick="showLinks('van')">Ngữ Văn (<span id="count-van"></span>)</div>
+<div class="box" onclick="showLinks('ps')">Photoshop (<span id="count-ps"></span>)</div>
 
 </div>
 
+<!-- DIA -->
 
 <div id="dia" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài Liệu Địa Lí</h2>
 
 <a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
-1.Sổ tay kiến thức trọng tâm môn địa lí ( Thầy Trần Văn Tài )
+1.Sổ tay kiến thức trọng tâm môn địa lí
+<span class="copy" onclick="copyLink(event,this)">📋</span>
+<span style="color:red">NEW</span>
 </a>
 
 <a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
-2.Chiến Lược Bứt Phá +9 Địa Lí ( Thầy Trần Văn Tài )
+2.Chiến Lược Bứt Phá +9 Địa Lí
+<span class="copy" onclick="copyLink(event,this)">📋</span>
 </a>
-    
+
 <h2>Đề Ôn Thi Thử Địa Lí</h2>
 <h3>Hiện Chưa Có</h3>
+
 </div>
 
+<!-- SU -->
 
 <div id="su" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Lịch Sử</h2>
 <h3>Hiện Chưa Có</h3>
-    
-<h2>Đề Ôn Thi Thử Lịch Sử</h2>
-<h3>Hiện Chưa Có</h3>
+
 </div>
 
+<!-- TOAN -->
 
 <div id="toan" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Toán</h2>
 <h3>Hiện Chưa Có</h3>
 
-<h2>Đề Ôn Thi Thử Toán</h2>
-<h3>Hiện Chưa Có</h3>
 </div>
 
+<!-- VAN -->
 
 <div id="van" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
 <h2>Tài liệu Ngữ Văn</h2>
 <h3>Hiện Chưa Có</h3>
 
-<h2>Đề Ôn Thi Thử Ngữ Văn</h2>
-<h3>Hiện Chưa Có</h3>
 </div>
 
+<!-- PS -->
 
 <div id="ps" class="links">
-<h2>Tài liệu Photoshop</h2>
 
-<h2>Brush</h2>
-<h3>Hiện Chưa Có</h3>
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
+<h2>Tài liệu Photoshop</h2>
 
 <h2>Shape</h2>
 
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
 1.Shape
+<span class="copy" onclick="copyLink(event,this)">📋</span>
 </a>
 
 </div>
 
-</div>
+<button onclick="topFunction()" id="topBtn">⬆</button>
 
+<footer>
+Cập nhật lần cuối: 2026
+</footer>
 
 <script>
 
-/* BẬT / TẮT CHẾ ĐỘ BẢO TRÌ */
-
-let maintenanceMode = false
-
-if(maintenanceMode){
-
-document.getElementById("mainSite").style.display="none"
-document.getElementById("maintenancePage").style.display="flex"
-
-}
-
-/* MENU */
+/* SHOW LINKS */
 
 function showLinks(id){
 
-let all = document.querySelectorAll(".links")
+document.getElementById("menu").style.display="none"
 
-all.forEach(box=>{
-box.style.display="none"
-})
+let all=document.querySelectorAll(".links")
+
+all.forEach(x=>x.style.display="none")
 
 document.getElementById(id).style.display="block"
 
 }
 
+/* BACK */
+
+function backMenu(){
+
+document.getElementById("menu").style.display="flex"
+
+let all=document.querySelectorAll(".links")
+
+all.forEach(x=>x.style.display="none")
+
+}
+
+/* DARK MODE */
+
+function toggleDark(){
+document.body.classList.toggle("dark")
+}
+
+/* SEARCH */
+
+function searchDoc(){
+
+let input=document.getElementById("search").value.toLowerCase()
+
+let links=document.querySelectorAll(".links a")
+
+links.forEach(link=>{
+
+if(link.textContent.toLowerCase().includes(input))
+link.style.display="block"
+else
+link.style.display="none"
+
+})
+
+}
+
+/* COPY */
+
+function copyLink(e,el){
+
+e.preventDefault()
+
+let url=el.parentElement.href
+
+navigator.clipboard.writeText(url)
+
+alert("Đã copy link")
+
+}
+
+/* SCROLL TOP */
+
+let topBtn=document.getElementById("topBtn")
+
+window.onscroll=function(){
+
+if(document.body.scrollTop>200||document.documentElement.scrollTop>200)
+topBtn.style.display="block"
+else
+topBtn.style.display="none"
+
+}
+
+function topFunction(){
+
+window.scrollTo({top:0,behavior:"smooth"})
+
+}
+
+/* COUNT FILES */
+
+function count(){
+
+["dia","su","toan","van","ps"].forEach(id=>{
+
+let c=document.querySelectorAll("#"+id+" a").length
+
+document.getElementById("count-"+id).innerText=c
+
+})
+
+}
+
+count()
+
 </script>
 
 </body>
 </html>
-
-
