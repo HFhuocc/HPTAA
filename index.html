@@ -12,6 +12,34 @@ body{
     background:#eaf6ff;
 }
 
+/* TRANG BẢO TRÌ */
+
+.maintenance{
+    display:none;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:#111;
+    color:white;
+    text-align:center;
+}
+
+.face{
+    font-size:90px;
+}
+
+.msg{
+    font-size:24px;
+    margin-top:20px;
+}
+
+/* WEB CHÍNH */
+
+#mainSite{
+display:block;
+}
+
 header{
     background:#5ab7ff;
     color:white;
@@ -58,7 +86,7 @@ header{
     color:#000000;
 }
     
- .links h3{
+.links h3{
     color:#FF0000;
 }
 
@@ -79,6 +107,25 @@ header{
 
 <body>
 
+<!-- TRANG BẢO TRÌ -->
+
+<div id="maintenancePage" class="maintenance">
+
+<div class="face">:(</div>
+
+<div class="msg">
+Xin lỗi!<br>
+Hệ thống đang cập nhật<br>
+Vui lòng quay lại sau!
+</div>
+
+</div>
+
+
+<!-- WEB CHÍNH -->
+
+<div id="mainSite">
+
 <header>HPTA</header>
 
 <div class="menu">
@@ -98,13 +145,16 @@ header{
 
 <div id="dia" class="links">
 <h2>Tài Liệu Địa Lí</h2>
+
 <a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
-    1.Sổ tay kiến thức trọng tâm môn địa lí ( Thầy Trần Văn Tài )
+1.Sổ tay kiến thức trọng tâm môn địa lí ( Thầy Trần Văn Tài )
 </a>
+
 <a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
-    2.Chiến Lược Bứt Phá +9 Địa Lí ( Thầy Trần Văn Tài )</a>
+2.Chiến Lược Bứt Phá +9 Địa Lí ( Thầy Trần Văn Tài )
+</a>
     
-<h2>Đề Ôn Thi Thừ Địa Lí</h2>
+<h2>Đề Ôn Thi Thử Địa Lí</h2>
 <h3>Hiện Chưa Có</h3>
 </div>
 
@@ -113,7 +163,7 @@ header{
 <h2>Tài liệu Lịch Sử</h2>
 <h3>Hiện Chưa Có</h3>
     
-<h2>Đề Ôn Thi Thừ Lịch Sử</h2>
+<h2>Đề Ôn Thi Thử Lịch Sử</h2>
 <h3>Hiện Chưa Có</h3>
 </div>
 
@@ -121,19 +171,18 @@ header{
 <div id="toan" class="links">
 <h2>Tài liệu Toán</h2>
 <h3>Hiện Chưa Có</h3>
-<h2>Đề Ôn Thi Thừ Toán</h2>
-<h3>Hiện Chưa Có</h3>
 
+<h2>Đề Ôn Thi Thử Toán</h2>
+<h3>Hiện Chưa Có</h3>
 </div>
 
 
 <div id="van" class="links">
 <h2>Tài liệu Ngữ Văn</h2>
-
-<h3>Hiện Chưa Có</h3>
-<h2>Đề Ôn Thi Thừ Ngữ Văn</h2>
 <h3>Hiện Chưa Có</h3>
 
+<h2>Đề Ôn Thi Thử Ngữ Văn</h2>
+<h3>Hiện Chưa Có</h3>
 </div>
 
 
@@ -142,15 +191,31 @@ header{
 
 <h2>Brush</h2>
 <h3>Hiện Chưa Có</h3>
-<h2>Shapeí</h2>
+
+<h2>Shape</h2>
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
-    1.Shape
+1.Shape
 </a>
+</div>
 
 </div>
 
 
 <script>
+
+/* BẬT / TẮT CHẾ ĐỘ BẢO TRÌ */
+
+let maintenanceMode = false
+
+if(maintenanceMode){
+
+document.getElementById("mainSite").style.display="none"
+document.getElementById("maintenancePage").style.display="flex"
+
+}
+
+
+/* MENU */
 
 function showLinks(id){
 
@@ -167,16 +232,4 @@ document.getElementById(id).style.display="block"
 </script>
 
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
