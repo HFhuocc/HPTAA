@@ -8,44 +8,54 @@
 <style>
 
 *{
+box-sizing:border-box;
 margin:0;
 padding:0;
-box-sizing:border-box;
 }
 
 body{
-font-family:system-ui;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 background:#eef7ff;
-display:flex;
-height:100vh;
+color:#0f172a;
 transition:.3s;
+}
+
+/* LAYOUT */
+
+.container{
+display:flex;
+min-height:100vh;
 }
 
 /* SIDEBAR */
 
 .sidebar{
-width:210px;
+width:150px;
 background:linear-gradient(180deg,#4da6ff,#6ec1ff);
 color:white;
-padding:25px 18px;
+padding:20px 12px;
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
 .logo{
-font-size:22px;
+font-size:18px;
 font-weight:bold;
-margin-bottom:25px;
+margin-bottom:10px;
+text-align:center;
 }
 
-.menu{
-padding:12px;
-border-radius:10px;
+.menu-btn{
+padding:9px 8px;
+border-radius:8px;
 cursor:pointer;
-margin-bottom:8px;
-transition:.2s;
+font-size:14px;
+transition:.25s;
 }
 
-.menu:hover{
-background:rgba(255,255,255,0.2);
+.menu-btn:hover{
+background:rgba(255,255,255,0.25);
 }
 
 /* MAIN */
@@ -76,49 +86,63 @@ button{
 border:none;
 background:#4da6ff;
 color:white;
-padding:10px 15px;
+padding:10px 16px;
 border-radius:12px;
 cursor:pointer;
 font-weight:600;
 }
 
-/* PAGE */
+/* HOME */
 
-.page{
+#home h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+#home p{
+font-size:18px;
+color:#334155;
+}
+
+/* LINKS */
+
+.links{
 display:none;
 animation:slide .35s ease;
 }
 
-.home{
+.links a{
 display:block;
-}
-
-/* FILE */
-
-.file{
 background:white;
+margin:12px 0;
 padding:14px;
 border-radius:12px;
-margin-bottom:12px;
+text-decoration:none;
+color:#1d4ed8;
+font-weight:600;
 box-shadow:0 5px 12px rgba(0,0,0,0.05);
+transition:.2s;
 }
 
-.file a{
-text-decoration:none;
-color:#2563eb;
-font-weight:bold;
+.links a:hover{
+transform:translateY(-2px);
+background:#eef6ff;
+}
+
+.back{
+margin-bottom:15px;
 }
 
 /* ANIMATION */
 
-@keyframes slide{
-from{opacity:0; transform:translateX(15px)}
-to{opacity:1; transform:translateX(0)}
-}
-
 @keyframes fade{
 from{opacity:0}
 to{opacity:1}
+}
+
+@keyframes slide{
+from{opacity:0;transform:translateX(10px)}
+to{opacity:1;transform:translateX(0)}
 }
 
 /* DARK MODE */
@@ -128,8 +152,9 @@ background:#0f172a;
 color:white;
 }
 
-.dark .file{
+.dark .links a{
 background:#1e293b;
+color:white;
 }
 
 .dark .timebox{
@@ -140,10 +165,16 @@ color:white;
 background:linear-gradient(180deg,#1e293b,#334155);
 }
 
+.dark #home p{
+color:#cbd5f5;
+}
+
 </style>
 </head>
 
 <body>
+
+<div class="container">
 
 <!-- SIDEBAR -->
 
@@ -151,12 +182,11 @@ background:linear-gradient(180deg,#1e293b,#334155);
 
 <div class="logo">HPTA</div>
 
-<div class="menu" onclick="openPage('home')">🏠 Trang Chủ</div>
-<div class="menu" onclick="openPage('dia')">🌏 Địa Lí</div>
-<div class="menu" onclick="openPage('su')">📜 Lịch Sử</div>
-<div class="menu" onclick="openPage('toan')">➗ Toán</div>
-<div class="menu" onclick="openPage('van')">📖 Ngữ Văn</div>
-<div class="menu" onclick="openPage('ps')">🎨 Photoshop</div>
+<div class="menu-btn" onclick="showLinks('dia')">🌏 Địa Lí</div>
+<div class="menu-btn" onclick="showLinks('su')">📜 Lịch Sử</div>
+<div class="menu-btn" onclick="showLinks('toan')">➗ Toán</div>
+<div class="menu-btn" onclick="showLinks('van')">📖 Ngữ Văn</div>
+<div class="menu-btn" onclick="showLinks('ps')">🎨 Photoshop</div>
 
 </div>
 
@@ -175,9 +205,7 @@ background:linear-gradient(180deg,#1e293b,#334155);
 
 </div>
 
-<!-- HOME -->
-
-<div id="home" class="page home">
+<div id="home">
 
 <h1>HPTA</h1>
 <p>Trang Web Tài Liệu & Ôn Tập</p>
@@ -186,84 +214,98 @@ background:linear-gradient(180deg,#1e293b,#334155);
 
 <!-- ĐỊA -->
 
-<div id="dia" class="page">
+<div id="dia" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài Liệu Địa Lí</h2>
 
-<div class="file">
-<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing">
-Sổ tay kiến thức trọng tâm môn địa lí
+<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
+1. Sổ tay kiến thức trọng tâm môn địa lí
 </a>
-</div>
 
-<div class="file">
-<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing">
-Chiến Lược Bứt Phá +9 Địa Lí
+<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
+2. Chiến Lược Bứt Phá +9 Địa Lí
 </a>
-</div>
+
+<h3 style="color:red">Đề ôn thi: Chưa có</h3>
 
 </div>
 
 <!-- LỊCH SỬ -->
 
-<div id="su" class="page">
+<div id="su" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài liệu Lịch Sử</h2>
-<p>Hiện chưa có</p>
+
+<h3 style="color:red">Hiện chưa có</h3>
 
 </div>
 
 <!-- TOÁN -->
 
-<div id="toan" class="page">
+<div id="toan" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài liệu Toán</h2>
-<p>Hiện chưa có</p>
+
+<h3 style="color:red">Hiện chưa có</h3>
 
 </div>
 
 <!-- VĂN -->
 
-<div id="van" class="page">
+<div id="van" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài liệu Ngữ Văn</h2>
-<p>Hiện chưa có</p>
+
+<h3 style="color:red">Hiện chưa có</h3>
 
 </div>
 
 <!-- PHOTOSHOP -->
 
-<div id="ps" class="page">
+<div id="ps" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài liệu Photoshop</h2>
 
-<div class="file">
-<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing">
-Shape
+<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
+1. Shape
 </a>
-</div>
 
 </div>
 
+</div>
 </div>
 
 <script>
 
-/* PAGE SWITCH */
+function showLinks(id){
 
-function openPage(id){
+document.getElementById("home").style.display="none"
 
-let pages=document.querySelectorAll(".page")
-
-pages.forEach(p=>{
-p.style.display="none"
-})
+let all=document.querySelectorAll(".links")
+all.forEach(x=>x.style.display="none")
 
 document.getElementById(id).style.display="block"
 
 }
 
-/* DARK MODE */
+function backHome(){
+
+document.getElementById("home").style.display="block"
+
+let all=document.querySelectorAll(".links")
+all.forEach(x=>x.style.display="none")
+
+}
 
 function toggleDark(){
 
@@ -281,8 +323,6 @@ localStorage.setItem("theme","light")
 
 }
 
-/* LOAD THEME */
-
 window.onload=function(){
 
 let theme=localStorage.getItem("theme")
@@ -293,8 +333,6 @@ document.getElementById("darkBtn").innerText="🐼 Tối"
 }
 
 }
-
-/* CLOCK */
 
 function updateClock(){
 
