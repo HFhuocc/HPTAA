@@ -2,6 +2,9 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HPTA</title>
 
 <style>
@@ -49,6 +52,8 @@ header{
     font-weight:bold;
 }
 
+/* MENU */
+
 .menu{
     display:flex;
     justify-content:center;
@@ -57,9 +62,12 @@ header{
     padding:40px;
 }
 
+/* BOX */
+
 .box{
     background:white;
-    width:180px;
+    width:100%;
+    max-width:180px;
     padding:25px;
     text-align:center;
     border-radius:10px;
@@ -74,6 +82,8 @@ header{
     transform:scale(1.08);
     background:#dff1ff;
 }
+
+/* LINKS */
 
 .links{
     display:none;
@@ -100,6 +110,40 @@ header{
 
 .links a:hover{
     text-decoration:underline;
+}
+
+/* RESPONSIVE CHO ĐIỆN THOẠI */
+
+@media (max-width:600px){
+
+header{
+font-size:22px;
+padding:18px;
+}
+
+.menu{
+padding:20px;
+gap:15px;
+}
+
+.box{
+max-width:140px;
+font-size:16px;
+padding:18px;
+}
+
+.links{
+padding:15px;
+}
+
+.face{
+font-size:70px;
+}
+
+.msg{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -193,9 +237,11 @@ Vui lòng quay lại sau!
 <h3>Hiện Chưa Có</h3>
 
 <h2>Shape</h2>
+
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
 1.Shape
 </a>
+
 </div>
 
 </div>
@@ -213,7 +259,6 @@ document.getElementById("mainSite").style.display="none"
 document.getElementById("maintenancePage").style.display="flex"
 
 }
-
 
 /* MENU */
 
@@ -233,5 +278,3 @@ document.getElementById(id).style.display="block"
 
 </body>
 </html>
-
-
