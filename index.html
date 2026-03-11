@@ -319,16 +319,27 @@ function searchDoc(){
 
 let input=document.getElementById("search").value.toLowerCase()
 
-let links=document.querySelectorAll(".links a")
+let sections=document.querySelectorAll(".links")
+
+sections.forEach(section=>{
+
+section.style.display="block"
+
+let links=section.querySelectorAll("a")
 
 links.forEach(link=>{
 
-if(link.textContent.toLowerCase().includes(input))
+if(link.textContent.toLowerCase().includes(input)){
 link.style.display="block"
-else
+}else{
 link.style.display="none"
+}
 
 })
+
+})
+
+document.getElementById("menu").style.display="none"
 
 }
 
@@ -385,3 +396,4 @@ count()
 
 </body>
 </html>
+
