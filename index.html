@@ -11,135 +11,120 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Segoe UI,Roboto;
 }
 
 body{
-font-family:Segoe UI,Roboto;
 background:#f1f5f9;
 color:#0f172a;
-transition:.3s;
+transition:0.3s;
 }
-
-/* layout */
 
 .container{
 display:flex;
 min-height:100vh;
 }
 
-/* sidebar */
+/* SIDEBAR */
 
 .sidebar{
 width:220px;
 background:linear-gradient(180deg,#2563eb,#3b82f6,#60a5fa);
 color:white;
-padding:20px;
+padding:25px 20px;
 }
 
 .logo{
-font-size:22px;
+font-size:24px;
 font-weight:bold;
-margin-bottom:25px;
+margin-bottom:30px;
 text-align:center;
 }
 
-.menu-btn{
-padding:12px;
-border-radius:12px;
-margin-bottom:10px;
-cursor:pointer;
-transition:.25s;
+.menu{
+display:flex;
+flex-direction:column;
+gap:10px;
 }
 
-.menu-btn:hover{
+.menu div{
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.menu div:hover{
 background:rgba(255,255,255,0.2);
 }
 
-/* main */
+/* MAIN */
 
 .main{
 flex:1;
-padding:30px;
+padding:40px;
 }
-
-/* topbar */
 
 .topbar{
 display:flex;
 justify-content:flex-end;
 gap:20px;
 align-items:center;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
-.timebox{
-font-size:14px;
-text-align:right;
-}
-
-.theme-btn{
+.themebtn{
 background:#2563eb;
-padding:10px 16px;
-border-radius:12px;
-color:white;
 border:none;
+color:white;
+padding:10px 18px;
+border-radius:12px;
 cursor:pointer;
 }
 
-/* home */
+/* HOME */
 
-#home h1{
-font-size:32px;
-margin-bottom:8px;
+.home h1{
+font-size:36px;
+margin-bottom:10px;
 }
 
-#home p{
+.home p{
 color:#475569;
+margin-bottom:30px;
 }
 
-/* link pages */
+/* CARDS */
 
-.links{
-display:none;
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
 }
 
-.links a{
-display:block;
+.card{
 background:white;
-padding:14px;
-margin:10px 0;
-border-radius:14px;
-text-decoration:none;
-color:#2563eb;
+padding:20px;
+border-radius:16px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+font-size:18px;
 font-weight:600;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-transition:.2s;
+cursor:pointer;
+transition:0.2s;
 }
 
-.links a:hover{
-transform:translateY(-3px);
+.card:hover{
+transform:translateY(-5px);
 }
 
-/* send button */
-
-.sendbtn{
-background:#f59e0b;
-color:white;
-padding:12px 18px;
-border-radius:14px;
-text-decoration:none;
-display:inline-block;
-margin-top:10px;
-}
-
-/* dark mode */
+/* DARK MODE */
 
 .dark{
 background:#0f172a;
 color:white;
 }
 
-.dark .links a{
+.dark .card{
 background:#1e293b;
 color:white;
 }
@@ -148,7 +133,7 @@ color:white;
 background:linear-gradient(180deg,#1e293b,#334155);
 }
 
-/* mobile */
+/* MOBILE */
 
 @media(max-width:768px){
 
@@ -158,14 +143,12 @@ flex-direction:column;
 
 .sidebar{
 width:100%;
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
 }
 
-.menu-btn{
-font-size:13px;
-padding:8px;
+.menu{
+flex-direction:row;
+flex-wrap:wrap;
+justify-content:center;
 }
 
 .main{
@@ -181,109 +164,53 @@ padding:20px;
 
 <div class="container">
 
-<!-- sidebar -->
-
 <div class="sidebar">
 
 <div class="logo">HPTA</div>
 
-<div class="menu-btn" onclick="showLinks('dia')">🌏 Địa Lí</div>
-<div class="menu-btn" onclick="showLinks('su')">📜 Lịch Sử</div>
-<div class="menu-btn" onclick="showLinks('toan')">➗ Toán</div>
-<div class="menu-btn" onclick="showLinks('van')">📖 Ngữ Văn</div>
-<div class="menu-btn" onclick="showLinks('ps')">🎨 Photoshop</div>
-<div class="menu-btn" onclick="showLinks('send')">📤 Gửi Tài Liệu</div>
+<div class="menu">
+
+<div>🌍 Địa Lí</div>
+<div>📜 Lịch Sử</div>
+<div>➗ Toán</div>
+<div>📖 Ngữ Văn</div>
+<div>🎨 Photoshop</div>
+<div onclick="openForm()">📤 Gửi Tài Liệu</div>
 
 </div>
 
-<!-- main -->
+</div>
 
 <div class="main">
 
 <div class="topbar">
 
-<div class="timebox">
+<div>
 <div id="date"></div>
 <div id="clock"></div>
 </div>
 
-<button class="theme-btn" onclick="toggleDark()" id="themeBtn">
+<button class="themebtn" onclick="toggleDark()" id="themebtn">
 🦀 Sáng
 </button>
 
 </div>
 
-<div id="home">
+<div class="home">
 
 <h1>HPTA</h1>
 <p>Trang Web Tài Liệu & Ôn Tập</p>
 
-</div>
+<div class="cards">
 
-<!-- dia -->
-
-<div id="dia" class="links">
-
-<h2>Tài Liệu Địa Lí</h2>
-
-<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
-Sổ tay kiến thức trọng tâm môn Địa Lí
-</a>
-
-<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
-Chiến Lược Bứt Phá +9 Địa Lí
-</a>
+<div class="card">🌍 Địa Lí</div>
+<div class="card">📜 Lịch Sử</div>
+<div class="card">➗ Toán</div>
+<div class="card">📖 Ngữ Văn</div>
+<div class="card">🎨 Photoshop</div>
+<div class="card" onclick="openForm()">📤 Gửi Tài Liệu</div>
 
 </div>
-
-<!-- su -->
-
-<div id="su" class="links">
-
-<h2>Tài liệu Lịch Sử</h2>
-<p>Hiện chưa có</p>
-
-</div>
-
-<!-- toan -->
-
-<div id="toan" class="links">
-
-<h2>Tài liệu Toán</h2>
-<p>Hiện chưa có</p>
-
-</div>
-
-<!-- van -->
-
-<div id="van" class="links">
-
-<h2>Tài liệu Ngữ Văn</h2>
-<p>Hiện chưa có</p>
-
-</div>
-
-<!-- photoshop -->
-
-<div id="ps" class="links">
-
-<h2>Tài liệu Photoshop</h2>
-
-<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
-Shape
-</a>
-
-</div>
-
-<!-- send -->
-
-<div id="send" class="links">
-
-<h2>Gửi tài liệu cho HPTA</h2>
-
-<a class="sendbtn" href="https://forms.gle/VcCM1YBt7nNfhRhbA" target="_blank">
-📤 Mở Form Gửi Tài Liệu
-</a>
 
 </div>
 
@@ -293,22 +220,15 @@ Shape
 
 <script>
 
-function showLinks(id){
-
-document.getElementById("home").style.display="none"
-
-let all=document.querySelectorAll(".links")
-all.forEach(x=>x.style.display="none")
-
-document.getElementById(id).style.display="block"
-
+function openForm(){
+window.open("https://forms.gle/VcCM1YBt7nNfhRhbA","_blank")
 }
 
 function toggleDark(){
 
 document.body.classList.toggle("dark")
 
-let btn=document.getElementById("themeBtn")
+let btn=document.getElementById("themebtn")
 
 if(document.body.classList.contains("dark")){
 btn.innerText="🐼 Tối"
@@ -317,8 +237,6 @@ btn.innerText="🦀 Sáng"
 }
 
 }
-
-/* clock */
 
 function updateClock(){
 
