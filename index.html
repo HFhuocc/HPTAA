@@ -8,144 +8,131 @@
 <style>
 
 *{
-box-sizing:border-box;
 margin:0;
 padding:0;
+box-sizing:border-box;
 }
 
 body{
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-background:#eef7ff;
+font-family:Segoe UI,Roboto;
+background:#f1f5f9;
 color:#0f172a;
 transition:.3s;
 }
 
-/* LAYOUT */
+/* layout */
 
 .container{
 display:flex;
 min-height:100vh;
 }
 
-/* SIDEBAR */
+/* sidebar */
 
 .sidebar{
-width:150px;
-background:linear-gradient(180deg,#4da6ff,#6ec1ff);
+width:220px;
+background:linear-gradient(180deg,#2563eb,#3b82f6,#60a5fa);
 color:white;
-padding:20px 12px;
-display:flex;
-flex-direction:column;
-gap:10px;
+padding:20px;
 }
 
 .logo{
-font-size:18px;
+font-size:22px;
 font-weight:bold;
-margin-bottom:10px;
+margin-bottom:25px;
 text-align:center;
 }
 
 .menu-btn{
-padding:9px 8px;
-border-radius:8px;
+padding:12px;
+border-radius:12px;
+margin-bottom:10px;
 cursor:pointer;
-font-size:14px;
 transition:.25s;
 }
 
 .menu-btn:hover{
-background:rgba(255,255,255,0.25);
+background:rgba(255,255,255,0.2);
 }
 
-/* MAIN */
+/* main */
 
 .main{
 flex:1;
 padding:30px;
-animation:fade .35s ease;
 }
 
-/* TOPBAR */
+/* topbar */
 
 .topbar{
 display:flex;
 justify-content:flex-end;
-align-items:center;
 gap:20px;
+align-items:center;
 margin-bottom:30px;
 }
 
 .timebox{
 font-size:14px;
 text-align:right;
-color:#1e3a8a;
 }
 
-button{
-border:none;
-background:#4da6ff;
-color:white;
+.theme-btn{
+background:#2563eb;
 padding:10px 16px;
 border-radius:12px;
+color:white;
+border:none;
 cursor:pointer;
-font-weight:600;
 }
 
-/* HOME */
+/* home */
 
 #home h1{
-font-size:34px;
-margin-bottom:10px;
+font-size:32px;
+margin-bottom:8px;
 }
 
 #home p{
-font-size:18px;
-color:#334155;
+color:#475569;
 }
 
-/* LINKS */
+/* link pages */
 
 .links{
 display:none;
-animation:slide .35s ease;
 }
 
 .links a{
 display:block;
 background:white;
-margin:12px 0;
 padding:14px;
-border-radius:12px;
+margin:10px 0;
+border-radius:14px;
 text-decoration:none;
-color:#1d4ed8;
+color:#2563eb;
 font-weight:600;
-box-shadow:0 5px 12px rgba(0,0,0,0.05);
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
 transition:.2s;
 }
 
 .links a:hover{
-transform:translateY(-2px);
-background:#eef6ff;
+transform:translateY(-3px);
 }
 
-.back{
-margin-bottom:15px;
+/* send button */
+
+.sendbtn{
+background:#f59e0b;
+color:white;
+padding:12px 18px;
+border-radius:14px;
+text-decoration:none;
+display:inline-block;
+margin-top:10px;
 }
 
-/* ANIMATION */
-
-@keyframes fade{
-from{opacity:0}
-to{opacity:1}
-}
-
-@keyframes slide{
-from{opacity:0;transform:translateX(10px)}
-to{opacity:1;transform:translateX(0)}
-}
-
-/* DARK MODE */
+/* dark mode */
 
 .dark{
 background:#0f172a;
@@ -157,16 +144,34 @@ background:#1e293b;
 color:white;
 }
 
-.dark .timebox{
-color:white;
-}
-
 .dark .sidebar{
 background:linear-gradient(180deg,#1e293b,#334155);
 }
 
-.dark #home p{
-color:#cbd5f5;
+/* mobile */
+
+@media(max-width:768px){
+
+.container{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.menu-btn{
+font-size:13px;
+padding:8px;
+}
+
+.main{
+padding:20px;
+}
+
 }
 
 </style>
@@ -176,7 +181,7 @@ color:#cbd5f5;
 
 <div class="container">
 
-<!-- SIDEBAR -->
+<!-- sidebar -->
 
 <div class="sidebar">
 
@@ -187,11 +192,11 @@ color:#cbd5f5;
 <div class="menu-btn" onclick="showLinks('toan')">➗ Toán</div>
 <div class="menu-btn" onclick="showLinks('van')">📖 Ngữ Văn</div>
 <div class="menu-btn" onclick="showLinks('ps')">🎨 Photoshop</div>
-<div class="menu-btn" onclick="showLinks('send')">📤 Gửi tài liệu</div>
+<div class="menu-btn" onclick="showLinks('send')">📤 Gửi Tài Liệu</div>
 
 </div>
 
-<!-- MAIN -->
+<!-- main -->
 
 <div class="main">
 
@@ -202,7 +207,9 @@ color:#cbd5f5;
 <div id="clock"></div>
 </div>
 
-<button onclick="toggleDark()" id="darkBtn">🦀 Sáng</button>
+<button class="theme-btn" onclick="toggleDark()" id="themeBtn">
+🦀 Sáng
+</button>
 
 </div>
 
@@ -213,92 +220,75 @@ color:#cbd5f5;
 
 </div>
 
-<!-- ĐỊA -->
+<!-- dia -->
 
 <div id="dia" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài Liệu Địa Lí</h2>
 
 <a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
-1. Sổ tay kiến thức trọng tâm môn địa lí
+Sổ tay kiến thức trọng tâm môn Địa Lí
 </a>
 
 <a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
-2. Chiến Lược Bứt Phá +9 Địa Lí
+Chiến Lược Bứt Phá +9 Địa Lí
 </a>
 
 </div>
 
-<!-- LỊCH SỬ -->
+<!-- su -->
 
 <div id="su" class="links">
 
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
 <h2>Tài liệu Lịch Sử</h2>
-
-<h3 style="color:red">Hiện chưa có</h3>
+<p>Hiện chưa có</p>
 
 </div>
 
-<!-- TOÁN -->
+<!-- toan -->
 
 <div id="toan" class="links">
 
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
 <h2>Tài liệu Toán</h2>
-
-<h3 style="color:red">Hiện chưa có</h3>
+<p>Hiện chưa có</p>
 
 </div>
 
-<!-- VĂN -->
+<!-- van -->
 
 <div id="van" class="links">
 
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
 <h2>Tài liệu Ngữ Văn</h2>
-
-<h3 style="color:red">Hiện chưa có</h3>
+<p>Hiện chưa có</p>
 
 </div>
 
-<!-- PHOTOSHOP -->
+<!-- photoshop -->
 
 <div id="ps" class="links">
-
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
 
 <h2>Tài liệu Photoshop</h2>
 
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
-1. Shape
+Shape
 </a>
 
 </div>
 
-<!-- GỬI TÀI LIỆU -->
+<!-- send -->
 
 <div id="send" class="links">
 
-<button class="back" onclick="backHome()">⬅ Quay lại</button>
-
 <h2>Gửi tài liệu cho HPTA</h2>
 
-<p>Nhấn nút dưới để gửi tài liệu cho website.</p>
-
-<a href="https://forms.gle/VcCM1YBt7nNfhRhbA" target="_blank"
-style="display:inline-block;background:#4da6ff;color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:10px;">
-📤 Mở form gửi tài liệu
+<a class="sendbtn" href="https://forms.gle/VcCM1YBt7nNfhRhbA" target="_blank">
+📤 Mở Form Gửi Tài Liệu
 </a>
 
 </div>
 
 </div>
+
 </div>
 
 <script>
@@ -314,41 +304,21 @@ document.getElementById(id).style.display="block"
 
 }
 
-function backHome(){
-
-document.getElementById("home").style.display="block"
-
-let all=document.querySelectorAll(".links")
-all.forEach(x=>x.style.display="none")
-
-}
-
 function toggleDark(){
 
 document.body.classList.toggle("dark")
 
-let btn=document.getElementById("darkBtn")
+let btn=document.getElementById("themeBtn")
 
 if(document.body.classList.contains("dark")){
 btn.innerText="🐼 Tối"
-localStorage.setItem("theme","dark")
 }else{
 btn.innerText="🦀 Sáng"
-localStorage.setItem("theme","light")
 }
 
 }
 
-window.onload=function(){
-
-let theme=localStorage.getItem("theme")
-
-if(theme==="dark"){
-document.body.classList.add("dark")
-document.getElementById("darkBtn").innerText="🐼 Tối"
-}
-
-}
+/* clock */
 
 function updateClock(){
 
@@ -369,7 +339,6 @@ document.getElementById("date").innerText=d+"/"+mo+"/"+y
 }
 
 setInterval(updateClock,1000)
-updateClock()
 
 </script>
 
