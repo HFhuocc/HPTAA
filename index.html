@@ -30,7 +30,7 @@ min-height:100vh;
 /* SIDEBAR */
 
 .sidebar{
-width:160px;
+width:150px;
 background:linear-gradient(180deg,#4da6ff,#6ec1ff);
 color:white;
 padding:20px 12px;
@@ -121,40 +121,16 @@ text-decoration:none;
 color:#1d4ed8;
 font-weight:600;
 box-shadow:0 5px 12px rgba(0,0,0,0.05);
-transition:.25s;
+transition:.2s;
 }
 
 .links a:hover{
-transform:translateY(-4px) scale(1.02);
+transform:translateY(-2px);
 background:#eef6ff;
-box-shadow:0 10px 20px rgba(0,0,0,0.08);
 }
 
 .back{
 margin-bottom:15px;
-}
-
-/* FORM */
-
-.formbox{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 12px rgba(0,0,0,0.05);
-max-width:400px;
-}
-
-.formbox input,
-.formbox textarea{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:8px;
-border:1px solid #cbd5e1;
-}
-
-.formbox button{
-width:100%;
 }
 
 /* ANIMATION */
@@ -193,16 +169,14 @@ background:linear-gradient(180deg,#1e293b,#334155);
 color:#cbd5f5;
 }
 
-.dark .formbox{
-background:#1e293b;
-}
-
 </style>
 </head>
 
 <body>
 
 <div class="container">
+
+<!-- SIDEBAR -->
 
 <div class="sidebar">
 
@@ -216,6 +190,8 @@ background:#1e293b;
 <div class="menu-btn" onclick="showLinks('send')">📤 Gửi tài liệu</div>
 
 </div>
+
+<!-- MAIN -->
 
 <div class="main">
 
@@ -246,8 +222,48 @@ background:#1e293b;
 <h2>Tài Liệu Địa Lí</h2>
 
 <a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
-Sổ tay kiến thức trọng tâm môn địa lí
+1. Sổ tay kiến thức trọng tâm môn địa lí
 </a>
+
+<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
+2. Chiến Lược Bứt Phá +9 Địa Lí
+</a>
+
+</div>
+
+<!-- LỊCH SỬ -->
+
+<div id="su" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
+
+<h2>Tài liệu Lịch Sử</h2>
+
+<h3 style="color:red">Hiện chưa có</h3>
+
+</div>
+
+<!-- TOÁN -->
+
+<div id="toan" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
+
+<h2>Tài liệu Toán</h2>
+
+<h3 style="color:red">Hiện chưa có</h3>
+
+</div>
+
+<!-- VĂN -->
+
+<div id="van" class="links">
+
+<button class="back" onclick="backHome()">⬅ Quay lại</button>
+
+<h2>Tài liệu Ngữ Văn</h2>
+
+<h3 style="color:red">Hiện chưa có</h3>
 
 </div>
 
@@ -260,7 +276,7 @@ Sổ tay kiến thức trọng tâm môn địa lí
 <h2>Tài liệu Photoshop</h2>
 
 <a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
-Shape
+1. Shape
 </a>
 
 </div>
@@ -273,19 +289,12 @@ Shape
 
 <h2>Gửi tài liệu cho HPTA</h2>
 
-<div class="formbox">
+<p>Nhấn nút dưới để gửi tài liệu cho website.</p>
 
-<input type="text" placeholder="Tên của bạn">
-
-<input type="text" placeholder="Link tài liệu (Google Drive...)">
-
-<textarea placeholder="Mô tả tài liệu"></textarea>
-
-<button onclick="alert('Đã gửi! Admin sẽ kiểm tra.')">
-Gửi tài liệu
-</button>
-
-</div>
+<a href="https://forms.gle/VcCM1YBt7nNfhRhbA" target="_blank"
+style="display:inline-block;background:#4da6ff;color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:bold;margin-top:10px;">
+📤 Mở form gửi tài liệu
+</a>
 
 </div>
 
