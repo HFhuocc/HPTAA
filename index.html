@@ -7,154 +7,109 @@
 
 <style>
 
-*{
+body{
 margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,Roboto;
+font-family:system-ui;
+background:#f3f6fb;
+color:#1f2937;
 }
 
-body{
-background:#f1f5f9;
-color:#0f172a;
-transition:0.3s;
+/* HEADER */
+
+.header{
+background:linear-gradient(90deg,#3b82f6,#2563eb);
+color:white;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-weight:bold;
+font-size:22px;
 }
+
+.theme{
+background:white;
+border-radius:20px;
+padding:6px 12px;
+font-size:14px;
+color:#f97316;
+cursor:pointer;
+}
+
+/* CONTENT */
 
 .container{
-display:flex;
-min-height:100vh;
+padding:18px;
 }
 
-/* SIDEBAR */
-
-.sidebar{
-width:220px;
-background:linear-gradient(180deg,#2563eb,#3b82f6,#60a5fa);
-color:white;
-padding:25px 20px;
-}
-
-.logo{
-font-size:24px;
+.title{
+font-size:20px;
 font-weight:bold;
-margin-bottom:30px;
-text-align:center;
 }
 
-.menu{
-display:flex;
-flex-direction:column;
-gap:10px;
+.subtitle{
+color:#6b7280;
+margin-bottom:18px;
 }
 
-.menu div{
-padding:12px;
-border-radius:10px;
-cursor:pointer;
-transition:0.2s;
-}
-
-.menu div:hover{
-background:rgba(255,255,255,0.2);
-}
-
-/* MAIN */
-
-.main{
-flex:1;
-padding:40px;
-}
-
-.topbar{
-display:flex;
-justify-content:flex-end;
-gap:20px;
-align-items:center;
-margin-bottom:40px;
-}
-
-.themebtn{
-background:#2563eb;
-border:none;
-color:white;
-padding:10px 18px;
-border-radius:12px;
-cursor:pointer;
-}
-
-/* HOME */
-
-.home h1{
-font-size:36px;
-margin-bottom:10px;
-}
-
-.home p{
-color:#475569;
-margin-bottom:30px;
-}
-
-/* CARDS */
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-gap:20px;
-}
+/* CARD */
 
 .card{
 background:white;
-padding:20px;
+border-radius:14px;
+padding:16px;
+margin-bottom:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.05);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* SUBJECT LIST */
+
+.subject{
+background:white;
 border-radius:16px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-font-size:18px;
-font-weight:600;
+box-shadow:0 6px 16px rgba(0,0,0,0.08);
+overflow:hidden;
+}
+
+.subject div{
+padding:16px;
+border-bottom:1px solid #eee;
+display:flex;
+justify-content:space-between;
+align-items:center;
 cursor:pointer;
-transition:0.2s;
+font-size:17px;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.subject div:last-child{
+border:none;
 }
 
-/* DARK MODE */
+/* SEND BUTTON */
+
+.send{
+margin-top:20px;
+background:linear-gradient(90deg,#fb923c,#f97316);
+color:white;
+padding:16px;
+text-align:center;
+border-radius:14px;
+font-weight:bold;
+font-size:18px;
+cursor:pointer;
+}
 
 .dark{
 background:#0f172a;
 color:white;
 }
 
-.dark .card{
+.dark .card,
+.dark .subject{
 background:#1e293b;
-color:white;
-}
-
-.dark .sidebar{
-background:linear-gradient(180deg,#1e293b,#334155);
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.container{
-flex-direction:column;
-}
-
-.sidebar{
-width:100%;
-}
-
-.menu{
-flex-direction:row;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.main{
-padding:20px;
-}
-
 }
 
 </style>
@@ -162,101 +117,93 @@ padding:20px;
 
 <body>
 
+<div class="header">
+
+HPTA
+
+<div class="theme" onclick="toggleTheme()" id="themeBtn">
+🐼 Sáng
+</div>
+
+</div>
+
 <div class="container">
 
-<div class="sidebar">
+<div class="title">
+HPTA
+</div>
 
-<div class="logo">HPTA</div>
+<div class="subtitle">
+Trang Web Tài Liệu & Ôn Tập
+</div>
 
-<div class="menu">
+<div class="card">
+<div>👤 9850 lượt truy cập</div>
+<div>›</div>
+</div>
 
-<div>🌍 Địa Lí</div>
-<div>📜 Lịch Sử</div>
-<div>➗ Toán</div>
-<div>📖 Ngữ Văn</div>
-<div>🎨 Photoshop</div>
-<div onclick="openForm()">📤 Gửi Tài Liệu</div>
+<div class="card">
+<div>👤 12 người đang online</div>
+<div>›</div>
+</div>
 
+<div class="subject">
+
+<div onclick="openLink('dia')">
+🌍 Địa Lí
+<span>›</span>
+</div>
+
+<div onclick="openLink('su')">
+📜 Lịch Sử
+<span>›</span>
+</div>
+
+<div onclick="openLink('toan')">
+➗ Toán
+<span>›</span>
+</div>
+
+<div onclick="openLink('van')">
+📖 Ngữ Văn
+<span>›</span>
+</div>
+
+<div onclick="openLink('ps')">
+🎨 Photoshop
+<span>›</span>
 </div>
 
 </div>
 
-<div class="main">
-
-<div class="topbar">
-
-<div>
-<div id="date"></div>
-<div id="clock"></div>
-</div>
-
-<button class="themebtn" onclick="toggleDark()" id="themebtn">
-🦀 Sáng
-</button>
-
-</div>
-
-<div class="home">
-
-<h1>HPTA</h1>
-<p>Trang Web Tài Liệu & Ôn Tập</p>
-
-<div class="cards">
-
-<div class="card">🌍 Địa Lí</div>
-<div class="card">📜 Lịch Sử</div>
-<div class="card">➗ Toán</div>
-<div class="card">📖 Ngữ Văn</div>
-<div class="card">🎨 Photoshop</div>
-<div class="card" onclick="openForm()">📤 Gửi Tài Liệu</div>
-
-</div>
-
-</div>
-
+<div class="send"
+onclick="window.open('https://forms.gle/VcCM1YBt7nNfhRhbA')">
+📤 Gửi Tài Liệu
 </div>
 
 </div>
 
 <script>
 
-function openForm(){
-window.open("https://forms.gle/VcCM1YBt7nNfhRhbA","_blank")
-}
-
-function toggleDark(){
+function toggleTheme(){
 
 document.body.classList.toggle("dark")
 
-let btn=document.getElementById("themebtn")
+let btn=document.getElementById("themeBtn")
 
 if(document.body.classList.contains("dark")){
-btn.innerText="🐼 Tối"
+btn.innerHTML="🦀 Tối"
 }else{
-btn.innerText="🦀 Sáng"
+btn.innerHTML="🐼 Sáng"
 }
 
 }
 
-function updateClock(){
+function openLink(m){
 
-let now=new Date()
-
-let h=String(now.getHours()).padStart(2,"0")
-let m=String(now.getMinutes()).padStart(2,"0")
-let s=String(now.getSeconds()).padStart(2,"0")
-
-document.getElementById("clock").innerText=h+":"+m+":"+s
-
-let d=now.getDate()
-let mo=now.getMonth()+1
-let y=now.getFullYear()
-
-document.getElementById("date").innerText=d+"/"+mo+"/"+y
+alert("Trang "+m+" sẽ mở ở bản đầy đủ")
 
 }
-
-setInterval(updateClock,1000)
 
 </script>
 
