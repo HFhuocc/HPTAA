@@ -3,113 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>HPTA</title>
 
 <style>
 
 body{
+font-family:Arial;
 margin:0;
-font-family:system-ui;
-background:#f3f6fb;
-color:#1f2937;
+background:#eaf6ff;
+transition:0.3s;
+}
+
+/* DARK MODE */
+
+.dark{
+background:#1e1e1e;
+color:white;
+}
+
+.dark header{
+background:#222;
+}
+
+.dark .box{
+background:#333;
+color:white;
 }
 
 /* HEADER */
 
-.header{
-background:linear-gradient(90deg,#3b82f6,#2563eb);
+header{
+background:#5ab7ff;
 color:white;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
+text-align:center;
+padding:25px;
+font-size:30px;
 font-weight:bold;
+}
+
+/* MENU */
+
+.menu{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+padding:40px;
+}
+
+.box{
+background:white;
+width:100%;
+max-width:180px;
+padding:25px;
+text-align:center;
+border-radius:10px;
+cursor:pointer;
+font-size:18px;
+font-weight:bold;
+transition:0.3s;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+.box:hover{
+transform:scale(1.08);
+background:#dff1ff;
+}
+
+/* LINKS */
+
+.links{
+display:none;
+padding:20px;
+max-width:700px;
+margin:auto;
+}
+
+.links h2{
+color:#000;
+}
+
+.links h3{
+color:red;
+}
+
+.links a{
+display:block;
+margin:10px 0;
+text-decoration:none;
+color:#0056a6;
+font-weight:bold;
+}
+
+.links a:hover{
+text-decoration:underline;
+}
+
+/* BACK BUTTON */
+
+.back{
+display:block;
+margin:20px auto;
+padding:10px 20px;
+background:#5ab7ff;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* COPY BUTTON */
+
+.copy{
+margin-left:10px;
+cursor:pointer;
+color:#666;
+}
+
+/* SCROLL TOP */
+
+#topBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#5ab7ff;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:8px;
+cursor:pointer;
+display:none;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+font-size:14px;
+color:#666;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+header{
 font-size:22px;
 }
 
-.theme{
-background:white;
-border-radius:20px;
-padding:6px 12px;
-font-size:14px;
-color:#f97316;
-cursor:pointer;
+.box{
+max-width:140px;
+font-size:16px;
 }
 
-/* CONTENT */
-
-.container{
-padding:18px;
-}
-
-.title{
-font-size:20px;
-font-weight:bold;
-}
-
-.subtitle{
-color:#6b7280;
-margin-bottom:18px;
-}
-
-/* CARD */
-
-.card{
-background:white;
-border-radius:14px;
-padding:16px;
-margin-bottom:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.05);
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-/* SUBJECT LIST */
-
-.subject{
-background:white;
-border-radius:16px;
-box-shadow:0 6px 16px rgba(0,0,0,0.08);
-overflow:hidden;
-}
-
-.subject div{
-padding:16px;
-border-bottom:1px solid #eee;
-display:flex;
-justify-content:space-between;
-align-items:center;
-cursor:pointer;
-font-size:17px;
-}
-
-.subject div:last-child{
-border:none;
-}
-
-/* SEND BUTTON */
-
-.send{
-margin-top:20px;
-background:linear-gradient(90deg,#fb923c,#f97316);
-color:white;
-padding:16px;
-text-align:center;
-border-radius:14px;
-font-weight:bold;
-font-size:18px;
-cursor:pointer;
-}
-
-.dark{
-background:#0f172a;
-color:white;
-}
-
-.dark .card,
-.dark .subject{
-background:#1e293b;
 }
 
 </style>
@@ -117,93 +165,179 @@ background:#1e293b;
 
 <body>
 
-<div class="header">
+<header>HPTA</header>
 
-HPTA
-
-<div class="theme" onclick="toggleTheme()" id="themeBtn">
-🐼 Sáng
+<div style="text-align:center;margin-top:10px;">
+<button onclick="toggleDark()" id="darkIcon">🦀</button>
 </div>
 
-</div>
+<div class="menu" id="menu">
 
-<div class="container">
-
-<div class="title">
-HPTA
-</div>
-
-<div class="subtitle">
-Trang Web Tài Liệu & Ôn Tập
-</div>
-
-<div class="card">
-<div>👤 9850 lượt truy cập</div>
-<div>›</div>
-</div>
-
-<div class="card">
-<div>👤 12 người đang online</div>
-<div>›</div>
-</div>
-
-<div class="subject">
-
-<div onclick="openLink('dia')">
-🌍 Địa Lí
-<span>›</span>
-</div>
-
-<div onclick="openLink('su')">
-📜 Lịch Sử
-<span>›</span>
-</div>
-
-<div onclick="openLink('toan')">
-➗ Toán
-<span>›</span>
-</div>
-
-<div onclick="openLink('van')">
-📖 Ngữ Văn
-<span>›</span>
-</div>
-
-<div onclick="openLink('ps')">
-🎨 Photoshop
-<span>›</span>
-</div>
+<div class="box" onclick="showLinks('dia')">Địa Lí (<span id="count-dia"></span>)</div>
+<div class="box" onclick="showLinks('su')">Lịch Sử (<span id="count-su"></span>)</div>
+<div class="box" onclick="showLinks('toan')">Toán (<span id="count-toan"></span>)</div>
+<div class="box" onclick="showLinks('van')">Ngữ Văn (<span id="count-van"></span>)</div>
+<div class="box" onclick="showLinks('ps')">Photoshop (<span id="count-ps"></span>)</div>
 
 </div>
 
-<div class="send"
-onclick="window.open('https://forms.gle/VcCM1YBt7nNfhRhbA')">
-📤 Gửi Tài Liệu
-</div>
+<!-- DIA -->
+
+<div id="dia" class="links">
+
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
+<h2>Tài Liệu Địa Lí</h2>
+
+<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
+1.Sổ tay kiến thức trọng tâm môn địa lí
+<span class="copy" onclick="copyLink(event,this)">📋</span>
+<span style="color:red">NEW</span>
+</a>
+
+<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
+2.Chiến Lược Bứt Phá +9 Địa Lí
+<span class="copy" onclick="copyLink(event,this)">📋</span>
+</a>
+
+<h2>Đề Ôn Thi Thử Địa Lí</h2>
+<h3>Hiện Chưa Có</h3>
 
 </div>
+
+<!-- SU -->
+
+<div id="su" class="links">
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+<h2>Tài liệu Lịch Sử</h2>
+<h3>Hiện Chưa Có</h3>
+</div>
+
+<!-- TOAN -->
+
+<div id="toan" class="links">
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+<h2>Tài liệu Toán</h2>
+<h3>Hiện Chưa Có</h3>
+</div>
+
+<!-- VAN -->
+
+<div id="van" class="links">
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+<h2>Tài liệu Ngữ Văn</h2>
+<h3>Hiện Chưa Có</h3>
+</div>
+
+<!-- PS -->
+
+<div id="ps" class="links">
+<button class="back" onclick="backMenu()">⬅ Quay lại</button>
+
+<h2>Tài liệu Photoshop</h2>
+
+<h2>Shape</h2>
+
+<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
+1.Shape
+<span class="copy" onclick="copyLink(event,this)">📋</span>
+</a>
+
+</div>
+
+<button onclick="topFunction()" id="topBtn">⬆</button>
+
+<footer>
+Cập nhật lần cuối: 2026
+</footer>
 
 <script>
 
-function toggleTheme(){
+/* SHOW LINKS */
+
+function showLinks(id){
+
+document.getElementById("menu").style.display="none"
+
+let all=document.querySelectorAll(".links")
+all.forEach(x=>x.style.display="none")
+
+document.getElementById(id).style.display="block"
+
+}
+
+/* BACK */
+
+function backMenu(){
+
+document.getElementById("menu").style.display="flex"
+
+let all=document.querySelectorAll(".links")
+all.forEach(x=>x.style.display="none")
+
+}
+
+/* DARK MODE */
+
+function toggleDark(){
 
 document.body.classList.toggle("dark")
 
-let btn=document.getElementById("themeBtn")
+let icon=document.getElementById("darkIcon")
 
 if(document.body.classList.contains("dark")){
-btn.innerHTML="🦀 Tối"
+icon.innerText="🐼"
 }else{
-btn.innerHTML="🐼 Sáng"
+icon.innerText="🦀"
 }
 
 }
 
-function openLink(m){
+/* COPY */
 
-alert("Trang "+m+" sẽ mở ở bản đầy đủ")
+function copyLink(e,el){
+
+e.preventDefault()
+
+let url=el.parentElement.href
+
+navigator.clipboard.writeText(url)
+
+alert("Đã copy link")
 
 }
+
+/* SCROLL TOP */
+
+let topBtn=document.getElementById("topBtn")
+
+window.onscroll=function(){
+
+if(document.body.scrollTop>200||document.documentElement.scrollTop>200)
+topBtn.style.display="block"
+else
+topBtn.style.display="none"
+
+}
+
+function topFunction(){
+window.scrollTo({top:0,behavior:"smooth"})
+}
+
+/* COUNT FILES */
+
+function count(){
+
+["dia","su","toan","van","ps"].forEach(id=>{
+
+let c=document.querySelectorAll("#"+id+" a").length
+document.getElementById("count-"+id).innerText=c
+
+})
+
+}
+
+count()
 
 </script>
 
