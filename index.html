@@ -8,42 +8,51 @@
 
 <style>
 
+/* ===== BODY ===== */
 body{
 font-family:Arial;
 margin:0;
-background:#eaf6ff;
+background:linear-gradient(135deg,#eaf6ff,#fdfbff);
 transition:0.3s;
 }
 
-/* DARK MODE */
-
+/* ===== DARK MODE ===== */
 .dark{
-background:#1e1e1e;
+background:#121212;
 color:white;
 }
 
 .dark header{
-background:#222;
+background:linear-gradient(135deg,#222,#111);
 }
 
 .dark .box{
-background:#333;
+background:#1f1f1f;
 color:white;
+box-shadow:0 5px 15px rgba(0,0,0,0.6);
 }
 
-/* HEADER */
+/* ⭐ FIX HOVER DARK MODE (CHỮ LUÔN RÕ) */
+.dark .box:hover{
+background:linear-gradient(135deg,#3a7bd5,#6dd5fa);
+color:white;
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 0 15px rgba(90,183,255,0.5);
+}
 
+/* ===== HEADER ===== */
 header{
-background:#5ab7ff;
+background:linear-gradient(135deg,#5ab7ff,#7c4dff);
 color:white;
 text-align:center;
 padding:25px;
 font-size:30px;
 font-weight:bold;
+letter-spacing:2px;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
 }
 
-/* MENU */
-
+/* ===== MENU ===== */
 .menu{
 display:flex;
 justify-content:center;
@@ -52,40 +61,62 @@ gap:20px;
 padding:40px;
 }
 
+/* ===== BOX ===== */
 .box{
 background:white;
-width:100%;
-max-width:180px;
+width:180px;
 padding:25px;
 text-align:center;
-border-radius:10px;
+border-radius:25px;
 cursor:pointer;
 font-size:18px;
 font-weight:bold;
 transition:0.3s;
-box-shadow:0 5px 10px rgba(0,0,0,0.1);
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
 .box:hover{
-transform:scale(1.08);
-background:#dff1ff;
+  transform:translateY(2px) scale(1.03); /* hiệu ứng nhấn xuống */
+  background:linear-gradient(135deg,#4da6ff,#3399ff); /* xanh đậm hơn */
+  color:white; /* đảm bảo chữ rõ */
+  box-shadow:0 3px 8px rgba(0,0,0,0.2); /* bóng nhẹ */
 }
 
-/* LINKS */
-
+/* ===== LINKS ===== */
 .links{
 display:none;
 padding:20px;
 max-width:700px;
 margin:auto;
+animation:fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
 }
 
 .links h2{
-color:#000;
+color:#333;
+}
+
+.dark .links h2{
+color:white;
+}
+
+h2{
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .links h3{
 color:red;
+}
+
+.desc{
+  font-size: 14px;
+  color:#ff0000;
+  margin-bottom:10px;
 }
 
 .links a{
@@ -94,50 +125,65 @@ margin:10px 0;
 text-decoration:none;
 color:#0056a6;
 font-weight:bold;
+transition:0.2s;
 }
 
 .links a:hover{
-text-decoration:underline;
+color:#7c4dff;
+transform:translateX(5px);
 }
 
-/* BACK BUTTON */
+/* ===== BUTTON ===== */
+button{
+border-radius:30px;
+border:none;
+cursor:pointer;
+transition:0.3s;
+}
 
+/* ===== DARK BUTTON ===== */
+#darkIcon{
+padding:8px 18px;
+background:linear-gradient(135deg,#5ab7ff,#7c4dff);
+color:white;
+}
+
+#darkIcon:hover{
+transform:scale(1.05);
+}
+
+/* ===== BACK BUTTON ===== */
 .back{
 display:block;
 margin:20px auto;
 padding:10px 20px;
-background:#5ab7ff;
+background:linear-gradient(135deg,#5ab7ff,#7c4dff);
 color:white;
-border:none;
-border-radius:8px;
-cursor:pointer;
 }
 
-/* COPY BUTTON */
-
-.copy{
-margin-left:10px;
-cursor:pointer;
-color:#666;
+.back:hover{
+transform:scale(1.05);
 }
 
-/* SCROLL TOP */
-
+/* ===== SCROLL TOP ===== */
 #topBtn{
 position:fixed;
 bottom:20px;
 right:20px;
-background:#5ab7ff;
+background:linear-gradient(135deg,#5ab7ff,#7c4dff);
 color:white;
-border:none;
 padding:10px 15px;
-border-radius:8px;
+border-radius:50%;
 cursor:pointer;
 display:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* FOOTER */
+#topBtn:hover{
+transform:scale(1.1);
+}
 
+/* ===== FOOTER ===== */
 footer{
 text-align:center;
 padding:20px;
@@ -145,19 +191,30 @@ font-size:14px;
 color:#666;
 }
 
-/* MOBILE */
-
-@media(max-width:600px){
-
+/* ===== MOBILE ===== */
+@media(max-width:768px){
 header{
 font-size:22px;
+padding:20px;
 }
-
+.menu{
+padding:20px;
+gap:15px;
+}
 .box{
-max-width:140px;
+width:45%;
 font-size:16px;
+padding:20px;
+}
 }
 
+@media(max-width:480px){
+.box{
+width:100%;
+}
+header{
+font-size:20px;
+}
 }
 
 </style>
@@ -168,7 +225,7 @@ font-size:16px;
 <header>HPTA</header>
 
 <div style="text-align:center;margin-top:10px;">
-<button onclick="toggleDark()" id="darkIcon">🦀</button>
+<button onclick="toggleDark()" id="darkIcon">🦀 sáng</button>
 </div>
 
 <div class="menu" id="menu">
@@ -182,65 +239,67 @@ font-size:16px;
 </div>
 
 <!-- DIA -->
-
 <div id="dia" class="links">
-
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 
 <h2>Tài Liệu Địa Lí</h2>
-
-<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view?usp=sharing" target="_blank">
+<p class="desc">Vui lòng click vào mục để tải hoặc xem trước !!!</p>
+<h2>Tổng hợp lý thuyết trọng tâm</h2>
+<a href="https://drive.google.com/file/d/1Y3fk0nHU1WFsecgXk3cau-1NBJoVcrD4/view" target="_blank">
 1.Sổ tay kiến thức trọng tâm môn địa lí
-<span class="copy" onclick="copyLink(event,this)">📋</span>
-<span style="color:red">NEW</span>
 </a>
 
-<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view?usp=sharing" target="_blank">
+<a href="https://drive.google.com/file/d/1UFuXTcBbt6YS73TvCMluFEKl8XlMVNq6/view" target="_blank">
 2.Chiến Lược Bứt Phá +9 Địa Lí
-<span class="copy" onclick="copyLink(event,this)">📋</span>
 </a>
 
 <h2>Đề Ôn Thi Thử Địa Lí</h2>
+<p class="desc">Vui lòng click vào mục để tải hoặc xem trước !!!</p>
 <h3>Hiện Chưa Có</h3>
-
 </div>
 
 <!-- SU -->
-
 <div id="su" class="links">
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 <h2>Tài liệu Lịch Sử</h2>
+<p class="desc">Vui lòng click vào mục để tải hoặc xem trước !!!</p>
 <h3>Hiện Chưa Có</h3>
 </div>
 
 <!-- TOAN -->
-
 <div id="toan" class="links">
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 <h2>Tài liệu Toán</h2>
+<p class="desc">Vui lòng click vào mục để tải hoặc xem trước !!!</p>
 <h3>Hiện Chưa Có</h3>
 </div>
 
 <!-- VAN -->
-
 <div id="van" class="links">
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 <h2>Tài liệu Ngữ Văn</h2>
+<p class="desc">Vui lòng click vào mục để tải hoặc xem trước !!!</p>
 <h3>Hiện Chưa Có</h3>
 </div>
 
 <!-- PS -->
-
 <div id="ps" class="links">
 <button class="back" onclick="backMenu()">⬅ Quay lại</button>
 
 <h2>Tài liệu Photoshop</h2>
-
+<p class="desc">Vui lòng click vào mục để tải hoặc xem trước !!!</p>
 <h2>Shape</h2>
-
-<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view?usp=sharing" target="_blank">
+<a href="https://drive.google.com/file/d/1xZrBnhTy7rRZ1Wx21FMD4p9bV--mxfV9/view" target="_blank">
 1.Shape
-<span class="copy" onclick="copyLink(event,this)">📋</span>
+</a>
+
+<h2>Ứng Dụng</h2>
+<a href="https://drive.google.com/file/d/1FFYr6qpHSbzdtxEUi9Vz9etM6kCoWHnN/view" target="_blank">
+1.illustrator (AI)
+</a>
+
+<a href="https://drive.google.com/file/d/15G8ukj-7OLEXKqo_bgBHhfewaYOv5XMJ/view" target="_blank">
+2.coreldraw
 </a>
 
 </div>
@@ -253,88 +312,47 @@ Cập nhật lần cuối: 2026
 
 <script>
 
-/* SHOW LINKS */
-
 function showLinks(id){
-
 document.getElementById("menu").style.display="none"
-
 let all=document.querySelectorAll(".links")
 all.forEach(x=>x.style.display="none")
-
 document.getElementById(id).style.display="block"
-
 }
-
-/* BACK */
 
 function backMenu(){
-
 document.getElementById("menu").style.display="flex"
-
 let all=document.querySelectorAll(".links")
 all.forEach(x=>x.style.display="none")
-
 }
-
-/* DARK MODE */
 
 function toggleDark(){
-
 document.body.classList.toggle("dark")
-
 let icon=document.getElementById("darkIcon")
-
 if(document.body.classList.contains("dark")){
-icon.innerText="🐼"
+icon.innerText="🐼 tối"
 }else{
-icon.innerText="🦀"
+icon.innerText="🦀 sáng"
 }
-
 }
-
-/* COPY */
-
-function copyLink(e,el){
-
-e.preventDefault()
-
-let url=el.parentElement.href
-
-navigator.clipboard.writeText(url)
-
-alert("Đã copy link")
-
-}
-
-/* SCROLL TOP */
 
 let topBtn=document.getElementById("topBtn")
 
 window.onscroll=function(){
-
 if(document.body.scrollTop>200||document.documentElement.scrollTop>200)
 topBtn.style.display="block"
 else
 topBtn.style.display="none"
-
 }
 
 function topFunction(){
 window.scrollTo({top:0,behavior:"smooth"})
 }
 
-/* COUNT FILES */
-
 function count(){
-
 ["dia","su","toan","van","ps"].forEach(id=>{
-
 let c=document.querySelectorAll("#"+id+" a").length
 document.getElementById("count-"+id).innerText=c
-
 })
-
 }
 
 count()
